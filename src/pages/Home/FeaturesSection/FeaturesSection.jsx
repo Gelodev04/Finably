@@ -17,10 +17,10 @@ export const FeaturesSection = () => {
           {features.map((feature) => (
             <div
               key={feature.id}
-              className="bg-white rounded-2xl p-6 md:p-8 transition-shadow border border-[#E1E1E1]"
+              className="bg-white rounded-2xl p-6  md:p-10  transition-shadow border border-[#E1E1E1]"
             >
               {/* Feature Image/Visual */}
-              <div className=" p-4 h-[200px] md:h-[300px] flex items-center justify-center">
+              <div className="  h-[200px] md:h-[300px] flex items-center justify-center">
                 <img
                   src={feature.image}
                   alt={feature.title}
