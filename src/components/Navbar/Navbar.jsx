@@ -14,17 +14,17 @@ export const Navbar = () => {
             />
           </div>
 
-          <div className="hidden md:flex gap-[48px]">
-            <a href="#" className="text-gray-800">
+          <div className="hidden md:flex gap-[48px] text-black">
+            <a href="#" className="">
               Product
             </a>
-            <a href="#" className="text-gray-800">
+            <a href="#" className="">
               Pricing
             </a>
-            <a href="#" className="text-gray-800">
+            <a href="#" className="">
               Resources
             </a>
-            <a href="#" className="text-gray-800">
+            <a href="#" className="">
               Company
             </a>
           </div>

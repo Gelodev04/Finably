@@ -4,6 +4,9 @@
 @theme {
   --font-family-sans: "Montserrat", sans-serif;
 
+  /* Custom black color */
+  --color-black: #202323;
+
   /* Custom brand color */
   --color-primary: #064ea2;
   --color-primary-50: #e6f2ff;
@@ -20,5 +23,6 @@
 
 body {
   font-family: var(--font-family-sans);
-  font-size: 18px
+  font-size: 18px;
+  color: var(--color-black);
 }
