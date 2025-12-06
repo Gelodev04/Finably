@@ -1,5 +1,6 @@
 import { features } from "./lib/features";
 import { Section, SectionHeader } from "../../../components/common";
+import { ArrowUpRight } from "lucide-react";
 
 export const FeaturesSection = () => {
   return (
@@ -47,21 +48,7 @@ export const FeaturesSection = () => {
             className="text-primary text-lg font-medium hover:text-primary-600 flex items-center gap-2"
           >
             And A Lot More Features
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 12L10 8L6 4"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ArrowUpRight size={18} />
           </a>
         </div>
       </div>
