@@ -14,7 +14,7 @@ export const Navbar = () => {
             />
           </div>
 
-          <div className="hidden md:flex gap-6">
+          <div className="hidden md:flex gap-[48px]">
             <a href="#" className="text-gray-800">
               Product
             </a>
@@ -29,7 +29,7 @@ export const Navbar = () => {
             </a>
           </div>
 
-          <Button variant="outline">Get Started</Button>
+          <Button variant="outline" className="text-[16px]">Get Started</Button>
         </div>
       </nav>
     </>
