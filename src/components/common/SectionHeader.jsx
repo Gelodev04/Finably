@@ -23,7 +23,7 @@ export const SectionHeader = ({
       {/* Main Heading */}
       {heading && (
         <h2
-          className={`text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-6 ${headingClassName}`}
+          className={`text-3xl md:text-4xl lg:text-[40px] font-medium text-center mb-6 ${headingClassName}`}
           dangerouslySetInnerHTML={
             typeof heading === "string" ? { __html: heading } : undefined
           }
@@ -35,7 +35,7 @@ export const SectionHeader = ({
       {/* Subheading */}
       {subheading && (
         <p
-          className={`text-lg md:text-xl text-center text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto ${subheadingClassName}`}
+          className={`text-lg  text-center text-gray-600 mb-12 md:mb-16 max-w-3xl mx-auto ${subheadingClassName}`}
         >
           {subheading}
         </p>

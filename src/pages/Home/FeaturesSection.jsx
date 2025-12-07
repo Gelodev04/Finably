@@ -1,5 +1,5 @@
-import { features } from "./lib/features";
-import { Section, SectionHeader } from "../../../components/common";
+import { features } from "./data/features";
+import { Section, SectionHeader } from "../../components/common";
 import { ArrowUpRight } from "lucide-react";
 
 export const FeaturesSection = () => {

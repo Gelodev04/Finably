@@ -1,9 +1,10 @@
-import { solutions } from "./lib/solutions";
-import { Section, SectionHeader } from "../../../components/common";
+import { solutions } from "./data/solutions";
+import { SectionHeader } from "../../components/common";
+import dashboard from "../../assets/images/dashboard-image-background.png";
 
 export const SolutionSection = () => {
   return (
-    <Section className="py-16 md:py-24">
+    <section className="py-16 md:py-24">
       <div className="container mx-auto px-4">
         <SectionHeader
           label="Solution"
@@ -24,13 +25,11 @@ export const SolutionSection = () => {
               >
                 {/* Icon */}
                 <div className="shrink-0">
-                  <div
-                    className="w-12 h-12 md:w-16 md:h-16 rounded-lg flex items-center justify-center"
-                  >
+                  <div className="w rounded-lg flex items-center justify-center">
                     <img
                       src={solution.icon}
                       alt={solution.title}
-                      className="size-[94px]"
+                      className="size-[100px]"
                     />
                   </div>
                 </div>
@@ -48,7 +47,11 @@ export const SolutionSection = () => {
             );
           })}
         </div>
+
+        <div className="mt-15">
+          <img src={dashboard} alt="dashboard" className="" />
+        </div>
       </div>
-    </Section>
+    </section>
   );
 };

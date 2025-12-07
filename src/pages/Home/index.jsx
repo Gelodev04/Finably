@@ -1,6 +1,7 @@
-import { HeroSection } from "./HeroSection/HeroSection";
-import { FeaturesSection } from "./FeaturesSection/FeaturesSection";
-import { SolutionSection } from "./SolutionSection/SolutionSection";
+import { HeroSection } from "./HeroSection";
+import { FeaturesSection } from "./FeaturesSection";
+import { SolutionSection } from "./SolutionSection";
+import { HowItWorksSection } from "./HowItWorksSection";
 
 export const HomePage = () => {
   return (
@@ -8,6 +9,7 @@ export const HomePage = () => {
       <HeroSection />
       <FeaturesSection />
       <SolutionSection />
+      <HowItWorksSection />
       <div className="min-h-screen"></div>
     </div>
   );

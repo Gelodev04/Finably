@@ -1,6 +1,6 @@
-import heroBg from "../../../assets/images/hero-section-bg.png";
-import { Button } from "../../../components/common/Button";
-import logo from "../../../assets/images/logo-icon.png";
+import heroBg from "../../assets/images/hero-section-bg.png";
+import { Button } from "../../components/common/Button";
+import logo from "../../assets/images/logo-icon.png";
 
 export const HeroSection = () => {
   return (

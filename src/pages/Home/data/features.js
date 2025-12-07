@@ -1,7 +1,7 @@
-import featureImg1 from "../../../../assets/images/features/feature-img-1.png";
-import featureImg2 from "../../../../assets/images/features/feature-img-2.png";
-import featureImg3 from "../../../../assets/images/features/feature-img-3.png";
-import featureImg4 from "../../../../assets/images/features/feature-img-4.png";
+import featureImg1 from "../../../assets/images/features/feature-img-1.png";
+import featureImg2 from "../../../assets/images/features/feature-img-2.png";
+import featureImg3 from "../../../assets/images/features/feature-img-3.png";
+import featureImg4 from "../../../assets/images/features/feature-img-4.png";
 
 export const features = [
   {
