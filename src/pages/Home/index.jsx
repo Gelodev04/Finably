@@ -4,6 +4,7 @@ import { SolutionSection } from "./SolutionSection";
 import { HowItWorksSection } from "./HowItWorksSection";
 import { PricingSection } from "./PricingSection";
 import { ReviewsSection } from "./ReviewsSection";
+import { CTASection } from "./CTASection";
 
 export const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ export const HomePage = () => {
       <HowItWorksSection />
       <PricingSection />
       <ReviewsSection />
+      <CTASection />
       <div className="min-h-screen"></div>
     </div>
   );
