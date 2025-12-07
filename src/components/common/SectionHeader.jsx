@@ -24,8 +24,11 @@ export const SectionHeader = ({
       {heading && (
         <h2
           className={`text-3xl md:text-4xl lg:text-5xl font-medium text-center mb-6 ${headingClassName}`}
+          dangerouslySetInnerHTML={
+            typeof heading === "string" ? { __html: heading } : undefined
+          }
         >
-          {heading}
+          {typeof heading !== "string" ? heading : null}
         </h2>
       )}
 
