@@ -9,7 +9,7 @@ export const Button = ({
     primary: "bg-primary text-white hover:bg-primary-600",
     secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
     ghost: "text-primary hover:bg-primary-50",
-    cta: "bg-white text-primary hover:bg-gray-100",
+    cta: "bg-white text-primary hover:bg-primary-50",
   };
 
   const baseClasses =

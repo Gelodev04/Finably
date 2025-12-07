@@ -8,7 +8,7 @@ import { CTASection } from "./CTASection";
 
 export const HomePage = () => {
   return (
-    <div className="max-w-[2000px] mx-auto px-3 md:px-10 space-y-20 ">
+    <div className=" space-y-20 ">
       <HeroSection />
       <FeaturesSection />
       <SolutionSection />
@@ -16,7 +16,6 @@ export const HomePage = () => {
       <PricingSection />
       <ReviewsSection />
       <CTASection />
-      <div className="min-h-screen"></div>
     </div>
   );
 };

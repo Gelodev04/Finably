@@ -1,5 +1,5 @@
-import logo from "../../assets/images/logo.png";
-import { Button } from "../common/Button";
+import logo from "../assets/images/logo.png";
+import { Button } from "./common/Button";
 
 export const Navbar = () => {
   return (
@@ -29,7 +29,9 @@ export const Navbar = () => {
             </a>
           </div>
 
-          <Button variant="outline" className="text-[16px]">Get Started</Button>
+          <Button variant="outline" className="text-[16px]">
+            Get Started
+          </Button>
         </div>
       </nav>
     </>
