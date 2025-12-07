@@ -5,8 +5,8 @@ export const steps = [
     title: "Sign up & connect accounts",
     description:
       "Create your profile and securely link your bank or card — no credit card required.",
-    bgColor: "bg-blue-50", // Light blue
-    numberColor: "text-blue-600", // Dark blue
+    bgColor: "#E6EDF5", // Light blue
+    numberColor: "text-[#064EA2]", // Dark blue
   },
   {
     id: 2,
@@ -14,8 +14,8 @@ export const steps = [
     title: "Plan your envelopes",
     description:
       "Set spending categories, allocate budgets, and get ready to stay on track.",
-    bgColor: "bg-purple-50", // Light purple
-    numberColor: "text-purple-600", // Dark purple
+    bgColor: "#f8f4fb", // Light purple
+    numberColor: "text-[#BC94DF]", // Dark purple
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ export const steps = [
     title: "Save, Spend, & Succeed",
     description:
       "See your progress in real time, adjust plans when needed, and hit your goals.",
-    bgColor: "bg-green-50", // Light green
-    numberColor: "text-green-600", // Dark green
+    bgColor: "#ECF4EF", // Light green
+    numberColor: "text-[#46A26F]", // Dark green
   },
 ];

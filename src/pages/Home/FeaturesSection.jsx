@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export const FeaturesSection = () => {
   return (
-    <Section className="py-16 md:py-24">
+    <Section>
       <div className="container mx-auto px-4">
         <SectionHeader
           label="Features"

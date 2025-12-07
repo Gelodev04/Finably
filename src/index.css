@@ -26,3 +26,17 @@ body {
   font-size: 18px;
   color: var(--color-black);
 }
+
+button {
+  cursor: pointer;
+}
+
+/* Hide scrollbar for carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

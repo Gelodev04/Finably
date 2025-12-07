@@ -12,11 +12,11 @@ export const SectionHeader = ({
       {/* Label/Button Pill */}
       {label && (
         <div className="flex justify-center mb-10">
-          <button
+          <p
             className={`px-8 py-6 bg-white rounded-full text-2xl shadow-xl border border-[#E1E1E1] ${labelClassName}`}
           >
             {label}
-          </button>
+          </p>
         </div>
       )}
 

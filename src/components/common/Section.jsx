@@ -3,13 +3,18 @@ export const Section = ({
   className = "",
   bgColor = "bg-[#FAFAFA]",
   borderColor = "border-[#E1E1E1]",
+  noBorder = false,
   ...props
 }) => {
-  const baseClasses = "border rounded-4xl p-6 md:p-8";
+  const baseClasses = noBorder
+    ? "rounded-4xl py-16 md:py-24"
+    : "border rounded-4xl py-16 md:py-24";
+
+  const borderClass = noBorder ? "" : borderColor;
 
   return (
     <section
-      className={`${baseClasses} ${bgColor} ${borderColor} ${className}`}
+      className={`${baseClasses} ${bgColor} ${borderClass} ${className}`}
       {...props}
     >
       {children}
