@@ -23,8 +23,15 @@ export const TextSection = ({
           {description && (
             <p
               className={`text-lg text-black leading-relaxed ${descriptionClassName}`}
+              dangerouslySetInnerHTML={
+                typeof description === "string" && description.includes("<br")
+                  ? { __html: description }
+                  : undefined
+              }
             >
-              {description}
+              {typeof description === "string" && description.includes("<br")
+                ? null
+                : description}
             </p>
           )}
         </div>

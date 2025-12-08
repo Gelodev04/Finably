@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/images/logo.png";
 import { Button } from "./common/Button";
 import { useClickOutside } from "../hooks/useClickOutside";
@@ -7,10 +8,22 @@ import { navLinks } from "../data/navLinks";
 
 export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useClickOutside(() => setOpenDropdown(null));
+  const mobileMenuRef = useClickOutside(() => setIsMobileMenuOpen(false));
 
   const handleDropdownToggle = (label) => {
     setOpenDropdown(openDropdown === label ? null : label);
+  };
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+    setOpenDropdown(null);
+  };
+
+  const handleLinkClick = () => {
+    setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
   };
 
   return (
@@ -24,11 +37,12 @@ export const Navbar = () => {
           />
         </Link>
 
-        <div className="hidden md:flex gap-[50px] text-black">
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex  gap-8 lg:gap-[50px] text-black mx-2">
           {navLinks.map((link) => (
             <div
               key={link.label}
-              className="relative"
+              className="relative text-base lg:text-lg"
               ref={
                 link.hasDropdown && openDropdown === link.label
                   ? dropdownRef
@@ -88,10 +102,98 @@ export const Navbar = () => {
           ))}
         </div>
 
-        <Button variant="outline" className="text-[16px]">
-          Get Started
-        </Button>
+        {/* Desktop CTA Button */}
+        <div className="hidden md:block">
+          <Button variant="outline" className="text-[16px]">
+            Get Started
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2"
+          onClick={handleMobileMenuToggle}
+          aria-label="Toggle menu"
+        >
+          {isMobileMenuOpen ? (
+            <X size={24} className="text-primary" />
+          ) : (
+            <Menu size={24} className="text-primary" />
+          )}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div
+          ref={mobileMenuRef}
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-[calc(100vh-90px)] overflow-y-auto"
+        >
+          <div className="container mx-auto px-4 py-6">
+            {navLinks.map((link) => (
+              <div key={link.label} className="mb-6">
+                {link.hasDropdown ? (
+                  <>
+                    <button
+                      onClick={() => handleDropdownToggle(link.label)}
+                      className="w-full text-left text-lg font-medium text-black mb-3 flex items-center justify-between"
+                    >
+                      {link.label}
+                      <span className="text-primary">
+                        {openDropdown === link.label ? "−" : "+"}
+                      </span>
+                    </button>
+
+                    {openDropdown === link.label && (
+                      <div className="pl-4 space-y-4">
+                        {link.dropdown.sections.map((section, index) => (
+                          <div key={index} className="mb-4">
+                            {section.title && (
+                              <h4 className="text-base font-medium text-gray-600 mb-3">
+                                {section.title}
+                              </h4>
+                            )}
+                            <ul className="space-y-3">
+                              {section.links.map((item) => (
+                                <li key={item.label}>
+                                  <Link
+                                    to={item.href}
+                                    className="text-black hover:text-primary transition-colors block text-sm"
+                                    onClick={handleLinkClick}
+                                  >
+                                    - {item.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className="text-lg font-medium text-black block mb-3"
+                    onClick={handleLinkClick}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+            <div className="mt-6 pt-6 border-t border-gray-200">
+              <Button
+                variant="outline"
+                className="text-[16px] w-full"
+                onClick={handleLinkClick}
+              >
+                Get Started
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

@@ -3,9 +3,9 @@ import {
   TextSection,
   SubFeaturesSection,
   CTASection,
-} from "../../../../components/common";
-import heroImage from "../../../../assets/images/core-features-bg/powerful-automation-bg.png";
-import { powerfulAutomationSubFeatures } from "../data/subFeatures";
+} from "../../../components/common";
+import heroImage from "../../../assets/images/core-features-bg/powerful-automation-bg.png";
+import { powerfulAutomationSubFeatures } from "./data/subFeatures";
 
 export const PowerfulAutomationPage = () => {
   return (

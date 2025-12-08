@@ -3,9 +3,9 @@ import {
   TextSection,
   SubFeaturesSection,
   CTASection,
-} from "../../../../components/common";
-import heroImage from "../../../../assets/images/core-features-bg/envelope-budgeting-bg.png";
-import { envelopeBudgetingSubFeatures } from "../data/subFeatures";
+} from "../../../components/common";
+import heroImage from "../../../assets/images/core-features-bg/envelope-budgeting-bg.png";
+import { envelopeBudgetingSubFeatures } from "./data/subFeatures";
 
 export const EnvelopeBudgetingPage = () => {
   return (
@@ -22,10 +22,7 @@ export const EnvelopeBudgetingPage = () => {
         description="Envelope budgeting helps you assign every dollar to a specific need, so you're never caught off guard. Instead of reacting when the bills arrive, you'll already have money set aside for them."
       />
       <SubFeaturesSection features={envelopeBudgetingSubFeatures} />
-      <CTASection
-        title="Stay Ahead of your Spendings"
-        buttonText="Start Now"
-      />
+      <CTASection title="Stay Ahead of your Spendings" buttonText="Start Now" />
     </>
   );
 };

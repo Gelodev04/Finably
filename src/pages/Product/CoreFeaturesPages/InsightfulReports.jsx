@@ -3,9 +3,9 @@ import {
   TextSection,
   SubFeaturesSection,
   CTASection,
-} from "../../../../components/common";
-import heroImage from "../../../../assets/images/core-features-bg/insights-bg.png";
-import { insightfulReportsSubFeatures } from "../data/subFeatures";
+} from "../../../components/common";
+import heroImage from "../../../assets/images/core-features-bg/insights-bg.png";
+import { insightfulReportsSubFeatures } from "./data/subFeatures";
 
 export const InsightfulReportsPage = () => {
   return (

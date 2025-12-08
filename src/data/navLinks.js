@@ -21,8 +21,8 @@ export const navLinks = [
         {
           title: "Security & Reliability",
           links: [
-            { label: "Data Protection", href: "#" },
-            { label: "Uptime Monitoring", href: "#" },
+            { label: "Data Protection", href: "/data-protection" },
+            { label: "Uptime Monitoring", href: "/uptime-monitoring" },
             { label: "Compliance", href: "#" },
           ],
         },

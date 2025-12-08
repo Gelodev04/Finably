@@ -2,11 +2,13 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { HomePage } from "./pages/Home";
-import { EnvelopeBudgetingPage } from "./pages/Product/CoreFeatures/EnvelopeBudgeting/index.jsx";
-import { PowerfulAutomationPage } from "./pages/Product/CoreFeatures/PowerfulAutomation/index.jsx";
-import { SeamlessBankIntegrationPage } from "./pages/Product/CoreFeatures/SeamlessBankIntegration/index.jsx";
-import { InsightfulReportsPage } from "./pages/Product/CoreFeatures/InsightfulReports/index.jsx";
-import { SupportedBanksPage } from "./pages/Product/CoreFeatures/SupportedBanks/index.jsx";
+import { EnvelopeBudgetingPage } from "./pages/Product/CoreFeaturesPages/EnvelopeBudgeting.jsx";
+import { PowerfulAutomationPage } from "./pages/Product/CoreFeaturesPages/PowerfulAutomation.jsx";
+import { SeamlessBankIntegrationPage } from "./pages/Product/CoreFeaturesPages/SeamlessBankIntegration.jsx";
+import { InsightfulReportsPage } from "./pages/Product/CoreFeaturesPages/InsightfulReports.jsx";
+import { SupportedBanksPage } from "./pages/Product/CoreFeaturesPages/SupportedBanks.jsx";
+import { DataProtectionPage } from "./pages/Product/SecurityReliabilityPages/DataProtection.jsx";
+import { UptimeMonitoringPage } from "./pages/Product/SecurityReliabilityPages/UptimeMonitoring.jsx";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -34,6 +36,11 @@ function App() {
               element={<InsightfulReportsPage />}
             />
             <Route path="/supported-banks" element={<SupportedBanksPage />} />
+            <Route path="/data-protection" element={<DataProtectionPage />} />
+            <Route
+              path="/uptime-monitoring"
+              element={<UptimeMonitoringPage />}
+            />
           </Routes>
         </div>
         <Footer />
