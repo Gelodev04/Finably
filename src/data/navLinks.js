@@ -9,10 +9,13 @@ export const navLinks = [
           title: "Core Features",
           links: [
             { label: "Envelope Budgeting", href: "/envelope-budgeting" },
-            { label: "Powerful Automation", href: "#" },
-            { label: "Seamless Bank Integration", href: "#" },
-            { label: "Insightful Reports", href: "#" },
-            { label: "Supported Banks", href: "#" },
+            { label: "Powerful Automation", href: "/powerful-automation" },
+            {
+              label: "Seamless Bank Integration",
+              href: "/seamless-bank-integration",
+            },
+            { label: "Insightful Reports", href: "/insightful-reports" },
+            { label: "Supported Banks", href: "/supported-banks" },
           ],
         },
         {

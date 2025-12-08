@@ -10,7 +10,7 @@ export const TextSection = ({
   noBorder = true,
 }) => {
   return (
-    <Section noBg={noBg} noBorder={noBorder} className={className}>
+    <Section noBg={noBg} noBorder={noBorder} className={`${className} `}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
           {title && (

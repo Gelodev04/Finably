@@ -17,6 +17,7 @@ export const EnvelopeBudgetingPage = () => {
         backgroundImage={heroImage}
       />
       <TextSection
+        className="pb-0!"
         title="Control your money with purpose."
         description="Envelope budgeting helps you assign every dollar to a specific need, so you're never caught off guard. Instead of reacting when the bills arrive, you'll already have money set aside for them."
       />

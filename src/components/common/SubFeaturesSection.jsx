@@ -1,5 +1,13 @@
 import { Section } from "./Section";
 
+const numberColors = [
+  "text-[#E6EDF5]", // 01 - light blue
+  "text-[#FEF5E6]", // 02 - light orange
+  "text-[#F2F3FE]", // 03 - light purple
+  "text-[#FDF0F0]", // 04 - light red
+  "text-[#ECF5F0]", // 05 - light green
+];
+
 export const SubFeaturesSection = ({
   title = "Sub-features",
   features = [],
@@ -18,9 +26,7 @@ export const SubFeaturesSection = ({
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap justify-center gap-4 ">
             {features.map((feature, index) => {
-              const numberColor =
-                feature.numberColor ||
-                numberColors[index % numberColors.length];
+              const numberColor = numberColors[index % numberColors.length];
               const number =
                 feature.number || String(index + 1).padStart(2, "0");
 

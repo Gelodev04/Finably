@@ -4,24 +4,28 @@ import {
   SubFeaturesSection,
   CTASection,
 } from "../../../../components/common";
-import heroImage from "../../../../assets/images/core-features-bg/envelope-budgeting-bg.png";
-import { envelopeBudgetingSubFeatures } from "../data/subFeatures";
+import heroImage from "../../../../assets/images/core-features-bg/powerful-automation-bg.png";
+import { powerfulAutomationSubFeatures } from "../data/subFeatures";
 
 export const PowerfulAutomationPage = () => {
   return (
     <>
       <FeatureHeroSection
         label="Core Features"
-        title="Envelope Budgeting"
-        description="Stay ahead of your spending — plan your money with envelopes and see your budget in action."
+        title="Powerful Automation"
+        description="Automation makes budgeting effortless. Instead of manually moving money into envelopes, Finably does it for you—based on the budget you set."
         backgroundImage={heroImage}
       />
       <TextSection
-        title="Control your money with purpose."
-        description="Envelope budgeting helps you assign every dollar to a specific need, so you're never caught off guard. Instead of reacting when the bills arrive, you'll already have money set aside for them."
+        className="pb-0!"
+        title=""
+        description="Finably takes the routine out of budgeting. With automation, your money gets allocated into the right envelopes without constant manual effort. You decide your budget once, and the system makes sure it’s followed every time you get paid. For advanced users, custom rules will give even more control and flexibility."
       />
-      <SubFeaturesSection features={envelopeBudgetingSubFeatures} />
-      <CTASection title="Stay Ahead of your Spendings" buttonText="Start Now" />
+      <SubFeaturesSection features={powerfulAutomationSubFeatures} />
+      <CTASection
+        title="Let Finably Handle The Routine"
+        buttonText="Start Now"
+      />
     </>
   );
 };

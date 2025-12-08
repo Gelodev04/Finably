@@ -21,10 +21,20 @@
   --color-primary-900: #020c20;
 }
 
+html,
+body,
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-family: var(--font-family-sans);
   font-size: 18px;
   color: var(--color-black);
+  margin: 0;
+  padding: 0;
 }
 
 button {

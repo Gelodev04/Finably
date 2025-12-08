@@ -22,7 +22,7 @@ export const CTASection = ({
         <div className="text-center">
           {/* Main Heading */}
           {title && (
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-8">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium text-white mb-8 capitalize ">
               {title}
             </h2>
           )}
