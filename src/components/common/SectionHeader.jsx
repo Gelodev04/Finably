@@ -1,3 +1,5 @@
+import { LabelPill } from "./LabelPill";
+
 export const SectionHeader = ({
   label,
   heading,
@@ -11,12 +13,8 @@ export const SectionHeader = ({
     <div className={`${className}`}>
       {/* Label/Button Pill */}
       {label && (
-        <div className="flex justify-center mb-10">
-          <p
-            className={`px-8 py-6 bg-white rounded-full text-2xl shadow-xl border border-[#E1E1E1] ${labelClassName}`}
-          >
-            {label}
-          </p>
+        <div className="mb-10">
+          <LabelPill className={labelClassName}>{label}</LabelPill>
         </div>
       )}
 

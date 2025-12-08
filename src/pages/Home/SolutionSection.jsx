@@ -16,7 +16,7 @@ export const SolutionSection = () => {
           subheading="From chaos to clarity — we make money management simple."
         />
         {/* Solutions Grid - 2 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[1300px] mx-auto">
           {solutions.map((solution) => {
             return (
               <div
