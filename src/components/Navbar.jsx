@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import logo from "../assets/images/logo.png";
 import { Button } from "./common/Button";
 import { useClickOutside } from "../hooks/useClickOutside";
@@ -53,22 +53,22 @@ export const Navbar = () => {
                 <>
                   <button
                     onClick={() => handleDropdownToggle(link.label)}
-                    className="hover:text-primary transition-colors"
+                    className="hover:text-primary transition-colors duration-200"
                   >
                     {link.label}
                   </button>
 
                   {openDropdown === link.label && (
-                    <div className="absolute top-full left-0 mt-2 bg-white rounded-b-[12px] shadow-lg border border-gray-100 p-6 z-50">
+                    <div className="absolute top-full left-0 mt-2 bg-white rounded-b-[12px] shadow-lg border border-gray-100 p-6 z-50 animate-fade-in">
                       <div className="flex gap-12">
                         {link.dropdown.sections.map((section, index) => (
                           <div key={index} className="shrink-0">
                             {section.title && (
                               <>
-                                <h3 className="text-xl font-medium text-black mb-2 whitespace-nowrap">
+                                <h3 className="text-lg font-medium text-black mb-2 whitespace-nowrap">
                                   {section.title}
                                 </h3>
-                                <div className="h-px bg-[#DBEFFF] my-8"></div>
+                                <div className="h-px bg-[#DBEFFF] my-5"></div>
                               </>
                             )}
                             <ul className="space-y-5">
@@ -76,7 +76,7 @@ export const Navbar = () => {
                                 <li key={item.label}>
                                   <Link
                                     to={item.href}
-                                    className="hover:text-primary transition-colors block whitespace-nowrap"
+                                    className="hover:text-primary transition-colors duration-200 block whitespace-nowrap text-base"
                                     onClick={() => setOpenDropdown(null)}
                                   >
                                     {item.label}
@@ -93,7 +93,7 @@ export const Navbar = () => {
               ) : (
                 <Link
                   to={link.href}
-                  className="hover:text-primary transition-colors"
+                  className="hover:text-primary transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -111,14 +111,20 @@ export const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 transition-transform duration-200 hover:scale-110"
           onClick={handleMobileMenuToggle}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
-            <X size={24} className="text-primary" />
+            <X
+              size={24}
+              className="text-primary transition-opacity duration-200"
+            />
           ) : (
-            <Menu size={24} className="text-primary" />
+            <Menu
+              size={24}
+              className="text-primary transition-opacity duration-200"
+            />
           )}
         </button>
       </div>
@@ -139,9 +145,11 @@ export const Navbar = () => {
                       className="w-full text-left text-lg font-medium text-black mb-3 flex items-center justify-between"
                     >
                       {link.label}
-                      <span className="text-primary">
-                        {openDropdown === link.label ? "−" : "+"}
-                      </span>
+                      {openDropdown === link.label ? (
+                        <ChevronUp size={20} className="text-primary" />
+                      ) : (
+                        <ChevronDown size={20} className="text-primary" />
+                      )}
                     </button>
 
                     {openDropdown === link.label && (
