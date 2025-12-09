@@ -7,6 +7,8 @@ import { Button } from "../../components/common/Button";
 import { Link } from "react-router-dom";
 import { HeroSection } from "../../components/common/HeroSection";
 import { missionAndBuilding, values, milestones } from "./data/aboutUs";
+import { ArrowUpRightIcon } from "lucide-react";
+import { CTASection } from "../../components/common";
 
 export const AboutUsPage = () => {
   return (
@@ -107,21 +109,24 @@ export const AboutUsPage = () => {
 
       {/* Milestones Section */}
       <Section>
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+        <div className="container mx-auto ">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <LabelPill>Milestones</LabelPill>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-4 px-4">
               {milestones.map((milestone) => (
-                <div key={milestone.id} className="space-y-2 border bg-white rounded-xl">
+                <div
+                  key={milestone.id}
+                  className="space-y-4 border bg-white rounded-xl p-4 text-center"
+                >
                   <p className="text-primary text-lg font-medium">
                     {milestone.date}
                   </p>
-                  <h3 className="text-xl font-medium text-black">
+                  <h3 className="text-2xl font-medium text-black">
                     {milestone.title}
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-lg  leading-relaxed">
                     {milestone.description}
                   </p>
                 </div>
@@ -132,10 +137,10 @@ export const AboutUsPage = () => {
       </Section>
 
       {/* Data Protection Section */}
-      <Section>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-4">
-            <div className="flex flex-wrap justify-center items-center gap-2 text-gray-600">
+      <Section backgroundImage={quoteBg}>
+        <div className="container mx-auto ">
+          <div className="max-w-4xl mx-auto text-center space-y-6 px-4">
+            <div className="flex flex-wrap justify-center items-center gap-4 font-medium">
               <span>GDPR/PSD2-aware practices</span>
               <span>•</span>
               <span>SOC 2/ISO-alighned infrastructure</span>
@@ -147,36 +152,18 @@ export const AboutUsPage = () => {
               className="inline-flex items-center gap-2 text-primary hover:underline"
             >
               Learn More About Data Protection
-              <span>→</span>
+              <ArrowUpRightIcon />
             </Link>
           </div>
         </div>
       </Section>
 
       {/* CTA Banner */}
-      <Section className="bg-primary">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-medium text-white">
-              Want To Build With Us?
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                variant="outline"
-                className="bg-white border-white text-primary hover:bg-gray-50 border-2"
-              >
-                See Open Roles
-              </Button>
-              <Button
-                variant="primary"
-                className="bg-white text-primary hover:bg-gray-50"
-              >
-                Contact Us
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <CTASection
+        title="Want To Build With Us?"
+        buttonText="See Open Roles"
+        buttonText2="Contact Us"
+      />
     </div>
   );
 };

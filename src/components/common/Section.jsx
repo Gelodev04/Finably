@@ -9,8 +9,8 @@ export const Section = ({
   ...props
 }) => {
   const baseClasses = noBorder
-    ? "rounded-4xl py-16 md:py-24"
-    : "border rounded-4xl py-16 md:py-24";
+    ? "rounded-[48px] py-16 md:py-24"
+    : "border rounded-[48px] py-16 md:py-24";
 
   const borderClass = noBorder ? "" : borderColor;
   const backgroundClass = noBg || backgroundImage ? "" : bgColor;

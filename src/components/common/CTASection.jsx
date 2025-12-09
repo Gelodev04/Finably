@@ -4,8 +4,10 @@ import ctaBg from "../../assets/images/cta-section-bg.png";
 export const CTASection = ({
   title = "Ready To Take Control Of Your Finances?",
   buttonText = "Start Now",
+  buttonText2,
   backgroundImage = ctaBg,
   onButtonClick,
+  onButton2Click,
   className = "",
 }) => {
   return (
@@ -27,11 +29,28 @@ export const CTASection = ({
             </h2>
           )}
 
-          {/* CTA Button */}
-          {buttonText && (
-            <Button variant="cta" className="py-3 px-6" onClick={onButtonClick}>
-              {buttonText}
-            </Button>
+          {/* CTA Buttons */}
+          {(buttonText || buttonText2) && (
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              {buttonText && (
+                <Button
+                  variant="cta"
+                  className="py-3 px-6"
+                  onClick={onButtonClick}
+                >
+                  {buttonText}
+                </Button>
+              )}
+              {buttonText2 && (
+                <Button
+                  variant="outline2"
+                  className="py-3 px-6"
+                  onClick={onButton2Click}
+                >
+                  {buttonText2}
+                </Button>
+              )}
+            </div>
           )}
         </div>
       </div>
