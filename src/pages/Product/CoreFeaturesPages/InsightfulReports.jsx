@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { insightfulReportsSubFeatures } from "./data/subFeatures";
 export const InsightfulReportsPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Core Features"
         title="Insightful Reports"
         description="Get a clear picture of your finances with powerful, customizable reports."

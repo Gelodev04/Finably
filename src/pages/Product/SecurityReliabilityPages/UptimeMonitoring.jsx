@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { uptimeMonitoringSubFeatures } from "./data/subFeatures";
 export const UptimeMonitoringPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Security & Reliability"
         title="Always On, Always Reliable"
         description="Finably is monitored 24/7 to ensure your financial data is available whenever you need it."

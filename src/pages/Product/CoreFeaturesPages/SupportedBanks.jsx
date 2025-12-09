@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   CTASection,
   Section,
@@ -18,7 +18,7 @@ export const SupportedBanksPage = () => {
 
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Integrations"
         title="Supported Banks & Institutions"
         description="Finably connects to thousands of banks and credit unions through secure open-banking technology."

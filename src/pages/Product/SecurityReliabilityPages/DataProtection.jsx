@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { dataProtectionSubFeatures } from "./data/subFeatures";
 export const DataProtectionPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Security & Reliability"
         title="Your Data, Always Protected"
         description="Finably keeps your financial information safe with enterprise-grade security and privacy standards"
@@ -28,7 +28,10 @@ export const DataProtectionPage = () => {
         description="Finably follows modern privacy and security standards, including GDPR and PSD2/Open Banking guidelines, to give you peace of mind.<br /><br />
         With Finably, you stay in control of your data. You can disconnect accounts or delete your data at any time."
       />
-      <CTASection title="Start Tracking with Confidence" buttonText="Try Finably Now" />
+      <CTASection
+        title="Start Tracking with Confidence"
+        buttonText="Try Finably Now"
+      />
     </>
   );
 };

@@ -3,7 +3,7 @@ export { Section } from "./Section";
 export { SectionHeader } from "./SectionHeader";
 export { SegmentedControl } from "./SegmentedControl";
 export { StarRating } from "./StarRating";
-export { FeatureHeroSection } from "./FeatureHeroSection";
+export { HeroSection } from "./HeroSection";
 export { LabelPill } from "./LabelPill";
 export { TextSection } from "./TextSection";
 export { SubFeaturesSection } from "./SubFeaturesSection";

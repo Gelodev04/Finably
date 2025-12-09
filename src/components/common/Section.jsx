@@ -5,6 +5,7 @@ export const Section = ({
   borderColor = "border-[#E1E1E1]",
   noBorder = false,
   noBg = false,
+  backgroundImage,
   ...props
 }) => {
   const baseClasses = noBorder
@@ -12,11 +13,21 @@ export const Section = ({
     : "border rounded-4xl py-16 md:py-24";
 
   const borderClass = noBorder ? "" : borderColor;
-  const backgroundClass = noBg ? "" : bgColor;
+  const backgroundClass = noBg || backgroundImage ? "" : bgColor;
+
+  const sectionStyle = backgroundImage
+    ? {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }
+    : {};
 
   return (
     <section
       className={`${baseClasses} ${backgroundClass} ${borderClass} ${className}`}
+      style={sectionStyle}
       {...props}
     >
       {children}

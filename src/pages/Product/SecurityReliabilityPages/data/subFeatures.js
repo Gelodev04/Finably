@@ -52,3 +52,34 @@ export const uptimeMonitoringSubFeatures = [
       "We maintain a public status page, so you can always check if everything is running smoothly.",
   },
 ];
+
+export const complianceSubFeatures = [
+  {
+    id: 1,
+    number: "01",
+    title: "GDPR & PSD2 Compliance",
+    description:
+      "We adhere to EU data privacy and open banking regulations, giving you transparency and control over your data",
+  },
+  {
+    id: 2,
+    number: "02",
+    title: "SOC 2 Type II & ISO 27001",
+    description:
+      "Our infrastructure meets globally recognized standards for security and availability",
+  },
+  {
+    id: 3,
+    number: "03",
+    title: "Regulatory Reporting",
+    description:
+      "We maintain audit trails and logging to comply with financial data handling requirements",
+  },
+  {
+    id: 4,
+    number: "04",
+    title: "User Rights Management",
+    description:
+      "You can access, correct, or delete your data at any time — full control stays with you.",
+  },
+];

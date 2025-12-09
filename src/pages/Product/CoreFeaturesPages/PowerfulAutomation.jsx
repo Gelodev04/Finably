@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { powerfulAutomationSubFeatures } from "./data/subFeatures";
 export const PowerfulAutomationPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Core Features"
         title="Powerful Automation"
         description="Automation makes budgeting effortless. Instead of manually moving money into envelopes, Finably does it for you—based on the budget you set."

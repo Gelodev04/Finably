@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { envelopeBudgetingSubFeatures } from "./data/subFeatures";
 export const EnvelopeBudgetingPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Core Features"
         title="Envelope Budgeting"
         description="Stay ahead of your spending — plan your money with envelopes and see your budget in action."

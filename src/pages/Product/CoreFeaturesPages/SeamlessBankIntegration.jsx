@@ -1,5 +1,5 @@
 import {
-  FeatureHeroSection,
+  HeroSection,
   TextSection,
   SubFeaturesSection,
   CTASection,
@@ -10,7 +10,7 @@ import { seamlessBankIntegrationSubFeatures } from "./data/subFeatures";
 export const SeamlessBankIntegrationPage = () => {
   return (
     <>
-      <FeatureHeroSection
+      <HeroSection
         label="Core Features"
         title="Seamless Bank Integration"
         description="Link your banks in seconds and trust your budget with clean, secure data."

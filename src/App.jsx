@@ -9,6 +9,8 @@ import { InsightfulReportsPage } from "./pages/Product/CoreFeaturesPages/Insight
 import { SupportedBanksPage } from "./pages/Product/CoreFeaturesPages/SupportedBanks.jsx";
 import { DataProtectionPage } from "./pages/Product/SecurityReliabilityPages/DataProtection.jsx";
 import { UptimeMonitoringPage } from "./pages/Product/SecurityReliabilityPages/UptimeMonitoring.jsx";
+import { CompliancePage } from "./pages/Product/SecurityReliabilityPages/Compliance.jsx";
+import { AboutUsPage } from "./pages/Company/AboutUs.jsx";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -41,6 +43,8 @@ function App() {
               path="/uptime-monitoring"
               element={<UptimeMonitoringPage />}
             />
+            <Route path="/compliance" element={<CompliancePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
           </Routes>
         </div>
         <Footer />

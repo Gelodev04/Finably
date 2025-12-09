@@ -23,7 +23,7 @@ export const navLinks = [
           links: [
             { label: "Data Protection", href: "/data-protection" },
             { label: "Uptime Monitoring", href: "/uptime-monitoring" },
-            { label: "Compliance", href: "#" },
+            { label: "Compliance", href: "/compliance" },
           ],
         },
       ],
@@ -59,7 +59,7 @@ export const navLinks = [
       sections: [
         {
           links: [
-            { label: "About Us", href: "#" },
+            { label: "About Us", href: "/about-us" },
             { label: "Careers", href: "#" },
             { label: "Contact", href: "#" },
           ],
