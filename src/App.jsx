@@ -11,6 +11,8 @@ import { DataProtectionPage } from "./pages/Product/SecurityReliabilityPages/Dat
 import { UptimeMonitoringPage } from "./pages/Product/SecurityReliabilityPages/UptimeMonitoring.jsx";
 import { CompliancePage } from "./pages/Product/SecurityReliabilityPages/Compliance.jsx";
 import { AboutUsPage } from "./pages/Company/AboutUs.jsx";
+import { CareerPage } from "./pages/Company/Career.jsx";
+import { ContactPage } from "./pages/Company/Contact.jsx";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
             />
             <Route path="/compliance" element={<CompliancePage />} />
             <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/career" element={<CareerPage />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
         <Footer />

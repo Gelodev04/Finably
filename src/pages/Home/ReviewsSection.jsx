@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Section, SectionHeader, StarRating } from "../../components/common";
 import { reviews } from "./data/reviews";
+import { Container } from "../../components/common/Container";
 
 export const ReviewsSection = () => {
   const topRowRef = useRef(null);
@@ -99,7 +100,7 @@ export const ReviewsSection = () => {
 
   return (
     <Section noBorder noBg className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
+      <Container>
         <SectionHeader label="Reviews" heading="Trusted by people like you" />
 
         {/* Reviews Carousel - 2 Rows, Scrollable */}
@@ -136,7 +137,7 @@ export const ReviewsSection = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

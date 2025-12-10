@@ -1,6 +1,7 @@
 import { Section, SectionHeader } from "../../components/common";
 import { steps } from "./data/how-it-works";
 import bgImage from "../../assets/images/how-it-works-bg.png";
+import { Container } from "../../components/common/Container";
 
 export const HowItWorksSection = () => {
   return (
@@ -13,7 +14,7 @@ export const HowItWorksSection = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="container mx-auto px-4">
+      <Container>
         <SectionHeader
           label="How it works?"
           heading="Manage money in 3 steps"
@@ -52,7 +53,7 @@ export const HowItWorksSection = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

@@ -1,11 +1,12 @@
 import { solutions } from "./data/solutions";
 import { SectionHeader } from "../../components/common";
 import dashboard from "../../assets/images/dashboard-image-background.png";
+import { Container } from "../../components/common/Container";
 
 export const SolutionSection = () => {
   return (
     <section className="py-16 md:py-24">
-      <div className="container mx-auto px-4">
+      <Container>
         <SectionHeader
           label="Solution"
           heading={
@@ -51,7 +52,7 @@ export const SolutionSection = () => {
         <div className="mt-15">
           <img src={dashboard} alt="dashboard" className="" />
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

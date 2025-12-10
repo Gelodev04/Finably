@@ -1,11 +1,12 @@
 import { features } from "./data/features";
 import { Section, SectionHeader } from "../../components/common";
 import { ArrowUpRight } from "lucide-react";
+import { Container } from "../../components/common/Container";
 
 export const FeaturesSection = () => {
   return (
     <Section>
-      <div className="container mx-auto px-4">
+      <Container>
         <SectionHeader
           label="Features"
           heading="Smarter Features. Stronger Finances."
@@ -51,7 +52,7 @@ export const FeaturesSection = () => {
             <ArrowUpRight size={18} />
           </a>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

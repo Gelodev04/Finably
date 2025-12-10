@@ -7,6 +7,7 @@ import {
 } from "../../components/common";
 import { pricingPlans } from "./data/pricing";
 import { Check, ArrowUpRight } from "lucide-react";
+import { Container } from "../../components/common/Container";
 
 export const PricingSection = () => {
   const [isYearly, setIsYearly] = useState(false);
@@ -18,7 +19,7 @@ export const PricingSection = () => {
 
   return (
     <Section noBorder className="py-16 md:py-24 overflow-hidden">
-      <div className="container mx-auto px-4">
+      <Container>
         <SectionHeader label="Pricing" heading="Simple pricing plans" />
 
         {/* Toggle Switch - Segmented Control */}
@@ -134,7 +135,7 @@ export const PricingSection = () => {
 
         {/* Cancel Anytime Text */}
         <p className="text-center text-gray-400 ">Cancel anytime</p>
-      </div>
+      </Container>
     </Section>
   );
 };

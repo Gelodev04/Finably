@@ -1,4 +1,5 @@
 import { Section } from "./Section";
+import { Container } from "./Container";
 
 export const TextSection = ({
   title,
@@ -11,7 +12,7 @@ export const TextSection = ({
 }) => {
   return (
     <Section noBg={noBg} noBorder={noBorder} className={`${className} `}>
-      <div className="container mx-auto px-4">
+      <Container>
         <div className="max-w-3xl mx-auto text-center">
           {title && (
             <h2
@@ -35,7 +36,7 @@ export const TextSection = ({
             </p>
           )}
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

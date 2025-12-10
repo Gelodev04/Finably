@@ -1,5 +1,6 @@
 export { Button } from "./Button";
 export { Section } from "./Section";
+export { Container } from "./Container";
 export { SectionHeader } from "./SectionHeader";
 export { SegmentedControl } from "./SegmentedControl";
 export { StarRating } from "./StarRating";
@@ -8,3 +9,5 @@ export { LabelPill } from "./LabelPill";
 export { TextSection } from "./TextSection";
 export { SubFeaturesSection } from "./SubFeaturesSection";
 export { CTASection } from "./CTASection";
+export { IconGrid } from "./IconGrid";
+export { ContactForm } from "./ContactForm";

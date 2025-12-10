@@ -1,4 +1,5 @@
 import { Section } from "./Section";
+import { Container } from "./Container";
 
 const numberColors = [
   "text-[#E6EDF5]", // 01 - light blue
@@ -16,7 +17,7 @@ export const SubFeaturesSection = ({
 
   return (
     <Section noBg noBorder>
-      <div className="container mx-auto px-4">
+      <Container>
         {/* Title */}
         <h2 className="text-3xl md:text-4xl font-medium text-black text-center mb-12 md:mb-16">
           {title}
@@ -62,7 +63,7 @@ export const SubFeaturesSection = ({
             })}
           </div>
         </div>
-      </div>
+      </Container>
     </Section>
   );
 };

@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
 import { HeroSection } from "../../components/common/HeroSection";
 import { missionAndBuilding, values, milestones } from "./data/aboutUs";
 import { ArrowUpRightIcon } from "lucide-react";
-import { CTASection } from "../../components/common";
+import { CTASection, IconGrid } from "../../components/common";
+import { Container } from "../../components/common/Container";
 
 export const AboutUsPage = () => {
   return (
@@ -22,7 +23,7 @@ export const AboutUsPage = () => {
       />
 
       {/* Team Section */}
-      <div className="container mx-auto ">
+      <Container>
         <div className="border rounded-xl md:rounded-4xl p-2 md:p-6">
           <img
             src={teamImage}
@@ -30,10 +31,10 @@ export const AboutUsPage = () => {
             className="w-full h-auto rounded-lg"
           />
         </div>
-      </div>
+      </Container>
 
       {/* Mission & What We're Building Section */}
-      <div className="container mx-auto   ">
+      <Container>
         <div className="grid md:grid-cols-2 gap-4">
           {missionAndBuilding.map((item) => (
             <div key={item.id} className="border rounded-xl p-8 text-center">
@@ -44,11 +45,11 @@ export const AboutUsPage = () => {
             </div>
           ))}
         </div>
-      </div>
+      </Container>
 
       {/* Quote Section */}
       <Section backgroundImage={quoteBg}>
-        <div className="container mx-auto ">
+        <Container>
           <div className="max-w-2xl mx-auto">
             <div className="flex flex-col justify-center items-center text-center gap-6">
               <div className="shrink-0">
@@ -71,45 +72,22 @@ export const AboutUsPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </Section>
 
       {/* Our Values Section */}
       <Section noBg noBorder>
-        <div className="container mx-auto ">
-          <div className=" mx-auto">
-            <div className="text-center mb-12">
-              <LabelPill>Our values</LabelPill>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              {values.map((value) => (
-                <div
-                  key={value.id}
-                  className="space-y-5 border p-8 text-center rounded-xl"
-                >
-                  <img
-                    src={value.icon}
-                    alt={value.title}
-                    className="size-22 mx-auto"
-                  />
-                  <div className="space-y-1">
-                    <h3 className="text-xl font-medium text-black">
-                      {value.title}
-                    </h3>
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      {value.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <Container>
+          <div className="text-center mb-12">
+            <LabelPill>Our values</LabelPill>
           </div>
-        </div>
+          <IconGrid items={values} />
+        </Container>
       </Section>
 
       {/* Milestones Section */}
       <Section>
-        <div className="container mx-auto ">
+        <Container>
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <LabelPill>Milestones</LabelPill>
@@ -133,12 +111,12 @@ export const AboutUsPage = () => {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </Section>
 
       {/* Data Protection Section */}
       <Section backgroundImage={quoteBg}>
-        <div className="container mx-auto ">
+        <Container>
           <div className="max-w-4xl mx-auto text-center space-y-6 px-4">
             <div className="flex flex-wrap justify-center items-center gap-4 font-medium">
               <span>GDPR/PSD2-aware practices</span>
@@ -155,7 +133,7 @@ export const AboutUsPage = () => {
               <ArrowUpRightIcon />
             </Link>
           </div>
-        </div>
+        </Container>
       </Section>
 
       {/* CTA Banner */}

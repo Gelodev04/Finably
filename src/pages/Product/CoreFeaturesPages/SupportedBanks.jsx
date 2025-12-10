@@ -1,20 +1,23 @@
-import { useState } from "react";
 import { Search } from "lucide-react";
 import {
   HeroSection,
   TextSection,
   CTASection,
   Section,
+  Container,
 } from "../../../components/common";
 import heroImage from "../../../assets/images/core-features-bg/supported-bg.png";
 import { banks } from "./data/banks";
+import { useSearchAndFilter } from "../../../hooks/useSearchAndFilter";
 
 export const SupportedBanksPage = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredBanks = banks.filter((bank) =>
-    bank.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const {
+    searchQuery,
+    setSearchQuery,
+    filteredItems: filteredBanks,
+  } = useSearchAndFilter(banks, {
+    searchField: "name",
+  });
 
   return (
     <>
@@ -30,7 +33,7 @@ export const SupportedBanksPage = () => {
         description="Connections are powered by Quiltt and use industry-standard encryption. Finably never sees or stores your login credentials."
       />
       <Section noBg noBorder>
-        <div className="container mx-auto px-4">
+        <Container>
           <div className="max-w-4xl mx-auto">
             {/* Search Bar */}
             <div className="mb-6 md:mb-8">
@@ -70,7 +73,7 @@ export const SupportedBanksPage = () => {
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </Section>
       <CTASection
         title="Start planning today — connect your bank in minutes"

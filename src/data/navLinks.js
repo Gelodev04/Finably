@@ -60,8 +60,8 @@ export const navLinks = [
         {
           links: [
             { label: "About Us", href: "/about-us" },
-            { label: "Careers", href: "#" },
-            { label: "Contact", href: "#" },
+            { label: "Career", href: "/career" },
+            { label: "Contact", href: "/contact" },
           ],
         },
       ],
