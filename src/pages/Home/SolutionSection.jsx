@@ -1,6 +1,7 @@
 import { solutions } from "./data/solutions";
 import { SectionHeader } from "../../components/common";
 import dashboard from "../../assets/images/dashboard-image-background.png";
+import dashboardMobile from "../../assets/images/dashboard-image-mobile.png";
 import { Container } from "../../components/common/Container";
 
 export const SolutionSection = () => {
@@ -22,10 +23,10 @@ export const SolutionSection = () => {
             return (
               <div
                 key={solution.id}
-                className="flex flex-col gap-15 items-start "
+                className="flex flex-col gap-15 items-center md:items-start "
               >
                 {/* Icon */}
-                <div className="shrink-0">
+                <div className="shrink-0 ">
                   <div className="w rounded-lg flex items-center justify-center">
                     <img
                       src={solution.icon}
@@ -50,7 +51,8 @@ export const SolutionSection = () => {
         </div>
 
         <div className="mt-15">
-          <img src={dashboard} alt="dashboard" className="" />
+          <img src={dashboard} alt="dashboard" className="hidden md:block" />
+          <img src={dashboardMobile} alt="dashboard" className="block md:hidden" />
         </div>
       </Container>
     </section>

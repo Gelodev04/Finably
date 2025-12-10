@@ -6,7 +6,7 @@ import { Container } from "../../components/common/Container";
 export const HeroSection = () => {
   return (
     <section
-      className="relative flex items-center justify-center rounded-[48px] overflow-hidden  h-[750px] border border-[#E1E1E1]"
+      className="relative flex items-center justify-center md:rounded-[48px] overflow-hidden  h-[750px] border border-[#E1E1E1]"
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",

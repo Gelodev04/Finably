@@ -118,10 +118,10 @@ export const ContactForm = ({ onSubmit, topics = [], className = "" }) => {
           name="agreeToTerms"
           checked={formData.agreeToTerms}
           onChange={handleInputChange}
-          className="size-5 cursor-pointer"
+          className="size-4 md:size-5 cursor-pointer"
           required
         />
-        <label htmlFor="agreeToTerms" className=" text-gray-600">
+        <label htmlFor="agreeToTerms" className=" text-gray-600 text-base">
           I agree to the terms and conditions.
         </label>
       </div>

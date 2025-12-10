@@ -21,7 +21,7 @@ export const Footer = () => {
 
   return (
     <footer
-      className="relative overflow-hidden mt-30  w-full max-w-[2000px] mx-auto border border-[#E1E1E1] rounded-t-[48px]  lg:h-[250px] mt"
+      className="relative overflow-hidden mt-30  w-full max-w-[2000px] mx-auto border border-[#E1E1E1] md:rounded-t-[48px]  lg:h-[250px] "
       style={{
         backgroundImage: `url(${footerBg})`,
         backgroundSize: "cover",

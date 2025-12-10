@@ -8,6 +8,7 @@ import { navLinks } from "../data/navLinks";
 
 export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [openSection, setOpenSection] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useClickOutside(() => setOpenDropdown(null));
   const mobileMenuRef = useClickOutside(() => setIsMobileMenuOpen(false));
@@ -19,11 +20,16 @@ export const Navbar = () => {
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     setOpenDropdown(null);
+    setOpenSection(null);
   };
 
   const handleLinkClick = () => {
-    setIsMobileMenuOpen(false);
-    setOpenDropdown(null);
+    // Close menu after a small delay to allow navigation
+    setTimeout(() => {
+      setIsMobileMenuOpen(false);
+      setOpenDropdown(null);
+      setOpenSection(null);
+    }, 100);
   };
 
   return (
@@ -118,12 +124,12 @@ export const Navbar = () => {
           {isMobileMenuOpen ? (
             <X
               size={24}
-              className="text-primary transition-opacity duration-200"
+              className="text-gray-500 transition-opacity duration-200"
             />
           ) : (
             <Menu
               size={24}
-              className="text-primary transition-opacity duration-200"
+              className="text-gray-500 transition-opacity duration-200"
             />
           )}
         </button>
@@ -133,72 +139,164 @@ export const Navbar = () => {
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-[calc(100vh-90px)] overflow-y-auto"
+          className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-[calc(100vh-90px)] overflow-y-auto rounded-b-4xl"
         >
-          <div className="container mx-auto px-4 py-6">
-            {navLinks.map((link) => (
-              <div key={link.label} className="mb-6">
-                {link.hasDropdown ? (
-                  <>
-                    <button
-                      onClick={() => handleDropdownToggle(link.label)}
-                      className="w-full text-left text-lg font-medium text-black mb-3 flex items-center justify-between"
+          {/* Mobile Menu Content */}
+          <div className="px-4 py-6">
+            {navLinks.map((link) => {
+              const isLinkOpen = openDropdown === link.label;
+
+              return (
+                <div key={link.label} className="mb-4">
+                  {link.hasDropdown ? (
+                    <>
+                      {/* Main Category Button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleDropdownToggle(link.label);
+                          setOpenSection(null);
+                        }}
+                        onMouseDown={(e) => e.stopPropagation()}
+                        onTouchStart={(e) => e.stopPropagation()}
+                        className={`w-full text-left text-lg font-medium mb-2 flex items-center justify-between py-2 px-3 rounded-lg transition-colors ${
+                          isLinkOpen ? "bg-blue-50 text-primary" : "text-black"
+                        }`}
+                      >
+                        {link.label}
+                        {isLinkOpen ? (
+                          <ChevronUp
+                            size={20}
+                            className={`text-gray-500 ${
+                              isLinkOpen ? "text-primary" : "text-black"
+                            }`}
+                          />
+                        ) : (
+                          <ChevronDown
+                            size={20}
+                            className={`text-gray-500 ${
+                              isLinkOpen ? "text-primary" : "text-black"
+                            }`}
+                          />
+                        )}
+                      </button>
+
+                      {/* Dropdown Content */}
+                      {isLinkOpen && (
+                        <div className="pl-4 space-y-3">
+                          {link.dropdown.sections.map(
+                            (section, sectionIndex) => {
+                              const sectionKey = `${link.label}-${sectionIndex}`;
+                              const isSectionOpen = openSection === sectionKey;
+
+                              return (
+                                <div key={sectionIndex} className="mb-4">
+                                  {/* Section Title (if exists) - Expandable */}
+                                  {section.title ? (
+                                    <>
+                                      <button
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setOpenSection(
+                                            isSectionOpen ? null : sectionKey
+                                          );
+                                        }}
+                                        onMouseDown={(e) => e.stopPropagation()}
+                                        onTouchStart={(e) =>
+                                          e.stopPropagation()
+                                        }
+                                        className={`w-full text-left text-base font-medium mb-2 flex items-center justify-between py-1 ${
+                                          isSectionOpen
+                                            ? "text-primary"
+                                            : "text-black"
+                                        }`}
+                                      >
+                                        {section.title}
+                                        {isSectionOpen ? (
+                                          <ChevronUp
+                                            size={20}
+                                            className={`text-gray-500 ${
+                                              isSectionOpen
+                                                ? "text-primary"
+                                                : "text-black"
+                                            }`}
+                                          />
+                                        ) : (
+                                          <ChevronDown
+                                            size={20}
+                                            className={`text-gray-500 ${
+                                              isSectionOpen
+                                                ? "text-primary"
+                                                : "text-black"
+                                            }`}
+                                          />
+                                        )}
+                                      </button>
+                                      {isSectionOpen && (
+                                        <ul className="pl-4 space-y-2">
+                                          {section.links.map((item) => (
+                                            <li key={item.label}>
+                                              <Link
+                                                to={item.href}
+                                                className="text-black hover:text-primary transition-colors block text-sm py-1"
+                                                onClick={handleLinkClick}
+                                                onMouseDown={(e) =>
+                                                  e.stopPropagation()
+                                                }
+                                                onTouchStart={(e) =>
+                                                  e.stopPropagation()
+                                                }
+                                              >
+                                                {item.label}
+                                              </Link>
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      )}
+                                    </>
+                                  ) : (
+                                    // No section title - show links directly
+                                    <ul className="pl-4 space-y-2">
+                                      {section.links.map((item) => (
+                                        <li key={item.label}>
+                                          <Link
+                                            to={item.href}
+                                            className="text-black hover:text-primary transition-colors block text-sm py-1"
+                                            onClick={handleLinkClick}
+                                            onMouseDown={(e) =>
+                                              e.stopPropagation()
+                                            }
+                                            onTouchStart={(e) =>
+                                              e.stopPropagation()
+                                            }
+                                          >
+                                            {item.label}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </div>
+                              );
+                            }
+                          )}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-lg font-medium text-black block py-2 px-3 rounded-lg hover:bg-gray-50 transition-colors"
+                      onClick={handleLinkClick}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
                     >
                       {link.label}
-                      {openDropdown === link.label ? (
-                        <ChevronUp size={20} className="text-primary" />
-                      ) : (
-                        <ChevronDown size={20} className="text-primary" />
-                      )}
-                    </button>
-
-                    {openDropdown === link.label && (
-                      <div className="pl-4 space-y-4">
-                        {link.dropdown.sections.map((section, index) => (
-                          <div key={index} className="mb-4">
-                            {section.title && (
-                              <h4 className="text-base font-medium text-gray-600 mb-3">
-                                {section.title}
-                              </h4>
-                            )}
-                            <ul className="space-y-3">
-                              {section.links.map((item) => (
-                                <li key={item.label}>
-                                  <Link
-                                    to={item.href}
-                                    className="text-black hover:text-primary transition-colors block text-sm"
-                                    onClick={handleLinkClick}
-                                  >
-                                    - {item.label}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <Link
-                    to={link.href}
-                    className="text-lg font-medium text-black block mb-3"
-                    onClick={handleLinkClick}
-                  >
-                    {link.label}
-                  </Link>
-                )}
-              </div>
-            ))}
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <Button
-                variant="outline"
-                className="text-[16px] w-full"
-                onClick={handleLinkClick}
-              >
-                Get Started
-              </Button>
-            </div>
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

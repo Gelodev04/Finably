@@ -29,7 +29,7 @@ export const SubFeaturesSection = ({
             className={
               features.length === 4
                 ? "grid grid-cols-1 md:grid-cols-2 gap-4"
-                : "flex flex-wrap justify-center gap-4"
+                : "grid grid-cols-1 md:flex md:flex-wrap md:justify-center gap-4"
             }
           >
             {features.map((feature, index) => {
@@ -40,8 +40,10 @@ export const SubFeaturesSection = ({
               return (
                 <div
                   key={feature.id || index}
-                  className={`bg-white rounded-2xl p-6 relative overflow-hidden min-h-[230px] border border-[#E1E1E1] flex justify-center items-center ${
-                    features.length === 4 ? "" : "flex-1 min-w-[310px]"
+                  className={`bg-white rounded-2xl p-6 relative overflow-hidden min-h-[230px] border border-[#E1E1E1] flex justify-center items-center w-full ${
+                    features.length === 4
+                      ? ""
+                      : "md:flex-1 md:min-w-[310px] md:max-w-[400px]"
                   }`}
                 >
                   {/* Background Number */}

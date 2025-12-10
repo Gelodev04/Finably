@@ -20,7 +20,7 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <div className="flex-1 max-w-[2000px] mx-auto px-3 md:px-10 w-full">
+        <div className="flex-1 max-w-[2000px] mx-auto md:px-10 w-full overflow-x-hidden">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route
@@ -51,7 +51,9 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </div>
-        <Footer />
+        <div className="md:mx-10">
+          <Footer />
+        </div>
       </div>
     </Router>
   );
