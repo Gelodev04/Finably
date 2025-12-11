@@ -11,6 +11,8 @@ export const HeroSection = ({
   buttonText,
   onButtonClick,
   children,
+  backdropBlur = false,
+  textWhite = false,
 }) => {
   return (
     <Section
@@ -22,21 +24,33 @@ export const HeroSection = ({
       }}
     >
       {/* Content */}
-      <Container className="relative z-10  ">
-        <div className="max-w-2xl mx-auto text-center space-y-10 ">
+      <Container
+        className={`relative z-10  ${backdropBlur ? "backdrop-blur-md py-10 max-w-7xl rounded-3xl" : ""}`}
+      >
+        <div className={` mx-auto text-center space-y-10 ${backdropBlur ? "max-w-7xl " : "max-w-2xl"}`}>
           {/* Label */}
           <LabelPill>{label}</LabelPill>
 
           {/* Title */}
           {title && (
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-medium text-center ">
+            <h1
+              className={`text-4xl md:text-5xl lg:text-[56px] font-medium text-center ${
+                textWhite ? "text-white leading-normal" : ""
+              }`}
+            >
               {title}
             </h1>
           )}
 
           {/* Description */}
           {description && (
-            <p className="text-lg md:text-xl text-black ">{description}</p>
+            <p
+              className={`text-lg md:text-xl ${
+                textWhite ? "text-white" : "text-black"
+              }`}
+            >
+              {description}
+            </p>
           )}
 
           {/* Button */}

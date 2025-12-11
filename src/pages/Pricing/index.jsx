@@ -135,22 +135,21 @@ export const PricingPage = () => {
 
       {/* FAQ Section */}
       <Section backgroundImage={faqBg}>
-        <Container>
-          <div className="max-w-4xl mx-auto">
+        <Container className=" ">
             <div className="flex justify-center mb-12">
               <LabelPill>FAQ</LabelPill>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 max-w-6xl mx-auto w-full flex flex-col  justify-center h-[500px] md:h-[400px]">
               {faqs.map((faq) => (
                 <div
                   key={faq.id}
-                  className="border-b border-[#E1E1E1] rounded-xl p-6 bg-white"
+                  className="border-b border-[#E1E1E1] rounded-xl p-6 bg-white "
                 >
                   <button
                     onClick={() => toggleFaq(faq.id)}
                     className="w-full flex items-center justify-between text-left"
                   >
-                    <h3 className="text-lg font-medium text-black">
+                    <h3 className="text-xl font-medium text-black">
                       {faq.question}
                     </h3>
                     {openFaq === faq.id ? (
@@ -167,7 +166,6 @@ export const PricingPage = () => {
                 </div>
               ))}
             </div>
-          </div>
         </Container>
       </Section>
 

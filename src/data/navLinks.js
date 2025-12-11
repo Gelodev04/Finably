@@ -42,8 +42,8 @@ export const navLinks = [
       sections: [
         {
           links: [
-            { label: "Blog", href: "#" },
-            { label: "Case Studies", href: "#" },
+            { label: "Blog", href: "/blog" },
+            { label: "Case Studies", href: "/case-studies" },
             { label: "Documentation", href: "#" },
             { label: "Webinars/Events", href: "#" },
           ],

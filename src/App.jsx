@@ -14,6 +14,9 @@ import { AboutUsPage } from "./pages/Company/AboutUs.jsx";
 import { CareerPage } from "./pages/Company/Career.jsx";
 import { ContactPage } from "./pages/Company/Contact.jsx";
 import { PricingPage } from "./pages/Pricing";
+import { BlogPage } from "./pages/Blog";
+import { BlogArticlePage } from "./pages/Blog/Article";
+import { CaseStudiesPage } from "./pages/CaseStudies";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -51,6 +54,9 @@ function App() {
             <Route path="/career" element={<CareerPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/articles" element={<BlogArticlePage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
           </Routes>
         </div>
         <div className="md:mx-10">
