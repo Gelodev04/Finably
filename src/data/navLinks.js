@@ -31,7 +31,7 @@ export const navLinks = [
   },
   {
     label: "Pricing",
-    href: "/#pricing",
+    href: "/pricing",
     hasDropdown: false,
   },
   {
@@ -42,7 +42,7 @@ export const navLinks = [
       sections: [
         {
           links: [
-            { label: "About Us", href: "#" },
+            { label: "Blog", href: "#" },
             { label: "Case Studies", href: "#" },
             { label: "Documentation", href: "#" },
             { label: "Webinars/Events", href: "#" },

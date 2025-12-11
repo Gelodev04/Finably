@@ -1,8 +1,18 @@
 export const IconGrid = ({ items = [] }) => {
   if (!items || items.length === 0) return null;
 
+  const getGridClasses = () => {
+    if (items.length === 4) {
+      return "grid grid-cols-1 md:grid-cols-2 gap-4";
+    } else if (items.length === 3) {
+      return "grid grid-cols-1 md:grid-cols-3 gap-4";
+    } else {
+      return "grid grid-cols-1 md:flex md:flex-wrap md:justify-center gap-4";
+    }
+  };
+
   return (
-    <div className="grid md:grid-cols-2 gap-4">
+    <div className={getGridClasses()}>
       {items.map((item) => (
         <div
           key={item.id}

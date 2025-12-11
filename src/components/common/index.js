@@ -11,3 +11,4 @@ export { SubFeaturesSection } from "./SubFeaturesSection";
 export { CTASection } from "./CTASection";
 export { IconGrid } from "./IconGrid";
 export { ContactForm } from "./ContactForm";
+export { PricingCard } from "./PricingCard";

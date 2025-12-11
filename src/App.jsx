@@ -13,6 +13,7 @@ import { CompliancePage } from "./pages/Product/SecurityReliabilityPages/Complia
 import { AboutUsPage } from "./pages/Company/AboutUs.jsx";
 import { CareerPage } from "./pages/Company/Career.jsx";
 import { ContactPage } from "./pages/Company/Contact.jsx";
+import { PricingPage } from "./pages/Pricing";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/career" element={<CareerPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
           </Routes>
         </div>
         <div className="md:mx-10">

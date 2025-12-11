@@ -22,7 +22,7 @@ export const CareerPage = () => {
   });
 
   return (
-    <div className="space-y-16 md:space-y-24">
+    <div className="">
       {/* Hero Section */}
       <HeroSection
         label="Company"
