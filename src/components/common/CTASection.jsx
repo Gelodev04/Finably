@@ -11,6 +11,10 @@ export const CTASection = ({
   onButtonClick,
   onButton2Click,
   className = "",
+  showInput = false,
+  inputPlaceholder = "example@gmail.com",
+  onInputChange,
+  inputValue,
 }) => {
   return (
     <div
@@ -36,28 +40,51 @@ export const CTASection = ({
             <p className="text-white mb-8 text-lg">{description}</p>
           )}
 
-          {/* CTA Buttons */}
-          {(buttonText || buttonText2) && (
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Input Form */}
+          {showInput ? (
+            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder={inputPlaceholder}
+                value={inputValue}
+                onChange={onInputChange}
+                className="flex-1 px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/10 text-white"
+              />
               {buttonText && (
                 <Button
-                  variant="cta"
-                  className="py-3 px-6"
+                  variant="filled"
+                  type="submit"
+                  className=" px-8 py-3"
                   onClick={onButtonClick}
                 >
                   {buttonText}
                 </Button>
               )}
-              {buttonText2 && (
-                <Button
-                  variant="outline2"
-                  className="py-3 px-6"
-                  onClick={onButton2Click}
-                >
-                  {buttonText2}
-                </Button>
-              )}
-            </div>
+            </form>
+          ) : (
+            /* CTA Buttons */
+            (buttonText || buttonText2) && (
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                {buttonText && (
+                  <Button
+                    variant="cta"
+                    className="py-3 px-6"
+                    onClick={onButtonClick}
+                  >
+                    {buttonText}
+                  </Button>
+                )}
+                {buttonText2 && (
+                  <Button
+                    variant="outline2"
+                    className="py-3 px-6"
+                    onClick={onButton2Click}
+                  >
+                    {buttonText2}
+                  </Button>
+                )}
+              </div>
+            )
           )}
         </div>
       </Container>

@@ -15,7 +15,7 @@ export const Button = ({
   };
 
   const baseClasses =
-    "px-4 py-2 rounded-[8px] cursor-pointer font-medium transition-colors";
+    "px-5 py-3 rounded-[8px] cursor-pointer font-medium transition-colors";
 
   return (
     <button

@@ -44,8 +44,7 @@ export const navLinks = [
           links: [
             { label: "Blog", href: "/blog" },
             { label: "Case Studies", href: "/case-studies" },
-            { label: "Documentation", href: "#" },
-            { label: "Webinars/Events", href: "#" },
+            { label: "Webinars/Events", href: "/webinars-events" },
           ],
         },
       ],

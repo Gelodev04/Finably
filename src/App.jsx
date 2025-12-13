@@ -17,6 +17,9 @@ import { PricingPage } from "./pages/Pricing";
 import { BlogPage } from "./pages/Blog";
 import { BlogArticlePage } from "./pages/Blog/Article";
 import { CaseStudiesPage } from "./pages/CaseStudies";
+import { WebinarsEventsPage } from "./pages/WebinarsEvents";
+import { WebinarRegisterPage } from "./pages/WebinarsEvents/RegisterPage";
+import { WebinarCalendarPage } from "./pages/WebinarsEvents/CalendarPage";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -57,6 +60,15 @@ function App() {
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/articles" element={<BlogArticlePage />} />
             <Route path="/case-studies" element={<CaseStudiesPage />} />
+            <Route path="/webinars-events" element={<WebinarsEventsPage />} />
+            <Route
+              path="/webinars/register"
+              element={<WebinarRegisterPage />}
+            />
+            <Route
+              path="/webinars/calendar"
+              element={<WebinarCalendarPage />}
+            />
           </Routes>
         </div>
         <div className="md:mx-10">
