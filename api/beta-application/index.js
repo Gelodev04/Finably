@@ -1,63 +1,47 @@
 import "dotenv/config";
 import { prisma } from "../_lib/prisma.js";
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   // Add CORS headers for Vercel
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   // Handle OPTIONS request for CORS
   if (req.method === "OPTIONS") {
-    return new Response(null, {
-      status: 200,
-      headers: corsHeaders,
-    });
+    return res.status(200).end();
   }
 
   // Only allow POST requests
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const body = await req.json();
-    const { email, fullName, platforms, financePlanning, agreeToEmails } = body;
-
     // Log for debugging
     console.log(
       "Beta application API called, DATABASE_URL:",
       process.env.DATABASE_URL ? "SET" : "NOT SET"
     );
 
+    // Vercel automatically parses JSON into req.body
+    const { email, fullName, platforms, financePlanning, agreeToEmails } =
+      req.body || {};
+
     // Validate required fields
     if (!email || !email.includes("@")) {
-      return new Response(
-        JSON.stringify({ error: "Valid email is required" }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      return res.status(400).json({ error: "Valid email is required" });
     }
 
     if (!agreeToEmails) {
-      return new Response(
-        JSON.stringify({ error: "Email consent is required" }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        }
-      );
+      return res.status(400).json({ error: "Email consent is required" });
     }
 
     // Create beta application entry
-    const betaApplication = await prisma.betaApplication.create({
+    console.log("Attempting to create beta application entry...");
+
+    // Use a timeout to ensure we don't exceed Vercel's 10s limit
+    const createPromise = prisma.betaApplication.create({
       data: {
         email: email.toLowerCase().trim(),
         fullName: fullName?.trim() || null,
@@ -67,17 +51,22 @@ export default async function handler(req) {
       },
     });
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "Beta application submitted successfully",
-        data: betaApplication,
-      }),
-      {
-        status: 201,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
+    // Race against a timeout (8 seconds to leave buffer for Vercel's 10s limit)
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(
+        () => reject(new Error("Database operation exceeded time limit")),
+        8000
+      )
     );
+
+    const betaApplication = await Promise.race([createPromise, timeoutPromise]);
+    console.log("Beta application created successfully:", betaApplication.id);
+
+    return res.status(201).json({
+      success: true,
+      message: "Beta application submitted successfully",
+      data: betaApplication,
+    });
   } catch (error) {
     console.error("Beta application submission error:", error);
     console.error("Error details:", {
@@ -85,16 +74,11 @@ export default async function handler(req) {
       code: error.code,
       name: error.name,
     });
-    return new Response(
-      JSON.stringify({
-        error: "Failed to submit beta application. Please try again later.",
-        details:
-          process.env.NODE_ENV === "development" ? error.message : undefined,
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+
+    return res.status(500).json({
+      error: "Failed to submit beta application. Please try again later.",
+      details:
+        process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
   }
 }

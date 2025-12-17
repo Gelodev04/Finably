@@ -30,9 +30,9 @@ export const JoinWaitlistPage = () => {
     }
 
     setIsSubmitting(true);
-    // Add timeout to prevent infinite loading
+    // Add timeout to prevent infinite loading (Vercel free tier has 10s limit)
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout (before Vercel's 10s limit)
 
     try {
       const response = await fetch("/api/waitlist", {
@@ -65,10 +65,15 @@ export const JoinWaitlistPage = () => {
       setShowSuccessModal(true);
       setWaitlistEmail("");
     } catch (error) {
-      clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
       console.error("Waitlist submission error:", error);
-      if (error.name === "AbortError") {
-        showToast("Request timed out. Please try again.", "error");
+      if (error.name === "AbortError" || error.message?.includes("aborted")) {
+        showToast(
+          "Request timed out. The server may be slow. Please try again.",
+          "error"
+        );
+      } else if (error.message) {
+        showToast(`Error: ${error.message}`, "error");
       } else {
         showToast("Failed to join waitlist. Please try again later.", "error");
       }

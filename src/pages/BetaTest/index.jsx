@@ -63,9 +63,9 @@ export const BetaTestPage = () => {
     }
 
     setIsSubmitting(true);
-    // Add timeout to prevent infinite loading
+    // Add timeout to prevent infinite loading (Vercel free tier has 10s limit)
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout (before Vercel's 10s limit)
 
     try {
       const response = await fetch("/api/beta-application", {
@@ -106,10 +106,15 @@ export const BetaTestPage = () => {
         agreeToEmails: false,
       });
     } catch (error) {
-      clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
       console.error("Beta application submission error:", error);
-      if (error.name === "AbortError") {
-        showToast("Request timed out. Please try again.", "error");
+      if (error.name === "AbortError" || error.message?.includes("aborted")) {
+        showToast(
+          "Request timed out. The server may be slow. Please try again.",
+          "error"
+        );
+      } else if (error.message) {
+        showToast(`Error: ${error.message}`, "error");
       } else {
         showToast(
           "Failed to submit beta application. Please try again later.",

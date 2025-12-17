@@ -56,36 +56,48 @@ export function apiPlugin() {
           const module = await import(`file://${filePath}`);
           const handler = module.default;
 
-          // Create a request-like object
-          const vercelReq = {
+          // Parse request body (for Express-style handlers)
+          let body = "";
+          await new Promise((resolve, reject) => {
+            req.on("data", (chunk) => (body += chunk));
+            req.on("end", resolve);
+            req.on("error", reject);
+          });
+
+          // Create Express-style req object
+          const expressReq = {
             method: req.method,
-            json: async () => {
-              return new Promise((resolve, reject) => {
-                let body = "";
-                req.on("data", (chunk) => (body += chunk));
-                req.on("end", () => {
-                  try {
-                    resolve(JSON.parse(body));
-                  } catch (e) {
-                    reject(e);
-                  }
-                });
-                req.on("error", reject);
+            url: req.url,
+            headers: req.headers,
+            body: body ? JSON.parse(body) : {},
+          };
+
+          // Create Express-style res object
+          let statusCode = 200;
+          const headers = {};
+          const expressRes = {
+            setHeader: (key, value) => {
+              headers[key] = value;
+            },
+            status: (code) => {
+              statusCode = code;
+              return expressRes;
+            },
+            json: (data) => {
+              res.writeHead(statusCode, {
+                ...headers,
+                "Content-Type": "application/json",
               });
+              res.end(JSON.stringify(data));
+            },
+            end: (data) => {
+              res.writeHead(statusCode, headers);
+              res.end(data);
             },
           };
 
-          // Call the handler
-          const response = await handler(vercelReq);
-
-          // Send the response
-          res.writeHead(response.status, {
-            ...Object.fromEntries(response.headers.entries()),
-            "Content-Type": "application/json",
-          });
-
-          const responseBody = await response.text();
-          res.end(responseBody);
+          // Call the handler with Express-style req and res
+          await handler(expressReq, expressRes);
         } catch (error) {
           console.error("API error:", error);
           res.writeHead(500, { "Content-Type": "application/json" });

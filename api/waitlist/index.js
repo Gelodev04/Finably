@@ -1,28 +1,20 @@
 import "dotenv/config";
 import { prisma } from "../_lib/prisma.js";
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   // Add CORS headers for Vercel
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
   // Handle OPTIONS request for CORS
   if (req.method === "OPTIONS") {
-    return new Response(null, {
-      status: 200,
-      headers: corsHeaders,
-    });
+    return res.status(200).end();
   }
 
   // Only allow POST requests
   if (req.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method not allowed" }), {
-      status: 405,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
@@ -32,65 +24,51 @@ export default async function handler(req) {
       process.env.DATABASE_URL ? "SET" : "NOT SET"
     );
     console.log("Request method:", req.method);
-    console.log("Request URL:", req.url);
 
-    const body = await req.json();
+    // Vercel automatically parses JSON into req.body
+    const { email } = req.body || {};
+
     console.log("Request body received:", {
-      email: body.email ? "present" : "missing",
+      email: email ? "present" : "missing",
     });
-    const { email } = body;
 
     // Validate email
     if (!email || !email.includes("@")) {
-      return new Response(
-        JSON.stringify({ error: "Valid email is required" }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      return res.status(400).json({ error: "Valid email is required" });
     }
 
     // Create waitlist entry (Prisma will handle duplicate email error)
     console.log("Attempting to create waitlist entry...");
 
-    // Add timeout wrapper for database operation
-    const createEntry = prisma.waitlistEntry.create({
+    // Use a timeout to ensure we don't exceed Vercel's 10s limit
+    const createPromise = prisma.waitlistEntry.create({
       data: {
         email: email.toLowerCase().trim(),
       },
     });
 
+    // Race against a timeout (8 seconds to leave buffer for Vercel's 10s limit)
     const timeoutPromise = new Promise((_, reject) =>
-      setTimeout(() => reject(new Error("Database operation timed out")), 15000)
+      setTimeout(
+        () => reject(new Error("Database operation exceeded time limit")),
+        8000
+      )
     );
 
-    const waitlistEntry = await Promise.race([createEntry, timeoutPromise]);
+    const waitlistEntry = await Promise.race([createPromise, timeoutPromise]);
     console.log("Waitlist entry created successfully:", waitlistEntry.id);
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "Successfully joined waitlist",
-        data: waitlistEntry,
-      }),
-      {
-        status: 201,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+    return res.status(201).json({
+      success: true,
+      message: "Successfully joined waitlist",
+      data: waitlistEntry,
+    });
   } catch (error) {
     // Handle duplicate email error
     if (error.code === "P2002") {
-      return new Response(
-        JSON.stringify({
-          error: "This email is already on the waitlist",
-        }),
-        {
-          status: 409,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      return res.status(409).json({
+        error: "This email is already on the waitlist",
+      });
     }
 
     console.error("Waitlist submission error:", error);
@@ -99,16 +77,11 @@ export default async function handler(req) {
       code: error.code,
       name: error.name,
     });
-    return new Response(
-      JSON.stringify({
-        error: "Failed to join waitlist. Please try again later.",
-        details:
-          process.env.NODE_ENV === "development" ? error.message : undefined,
-      }),
-      {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      }
-    );
+
+    return res.status(500).json({
+      error: "Failed to join waitlist. Please try again later.",
+      details:
+        process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
   }
 }

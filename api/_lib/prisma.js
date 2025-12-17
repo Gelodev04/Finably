@@ -22,8 +22,11 @@ if (!globalForPrisma.prisma) {
     pool = new Pool({
       connectionString: process.env.DATABASE_URL,
       max: 1, // Limit connections for serverless
-      idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 10000,
+      min: 0, // Don't keep idle connections
+      idleTimeoutMillis: 10000,
+      connectionTimeoutMillis: 3000, // Fast connection timeout for serverless
+      query_timeout: 5000, // Query timeout
+      statement_timeout: 5000, // PostgreSQL statement timeout
     });
 
     const adapter = new PrismaPg(pool);
