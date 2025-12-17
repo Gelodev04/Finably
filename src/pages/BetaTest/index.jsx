@@ -63,6 +63,10 @@ export const BetaTestPage = () => {
     }
 
     setIsSubmitting(true);
+    // Add timeout to prevent infinite loading
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
     try {
       const response = await fetch("/api/beta-application", {
         method: "POST",
@@ -70,14 +74,25 @@ export const BetaTestPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        signal: controller.signal,
       });
 
-      const data = await response.json();
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
-        showToast(data.error || "Failed to submit beta application", "error");
+        let errorMessage = "Failed to submit beta application";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch (e) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`;
+        }
+        showToast(errorMessage, "error");
+        setIsSubmitting(false);
         return;
       }
+
+      const data = await response.json();
 
       // Show success modal
       setShowSuccessModal(true);
@@ -91,11 +106,16 @@ export const BetaTestPage = () => {
         agreeToEmails: false,
       });
     } catch (error) {
+      clearTimeout(timeoutId);
       console.error("Beta application submission error:", error);
-      showToast(
-        "Failed to submit beta application. Please try again later.",
-        "error"
-      );
+      if (error.name === "AbortError") {
+        showToast("Request timed out. Please try again.", "error");
+      } else {
+        showToast(
+          "Failed to submit beta application. Please try again later.",
+          "error"
+        );
+      }
     } finally {
       setIsSubmitting(false);
     }

@@ -2,15 +2,35 @@ import "dotenv/config";
 import { prisma } from "../_lib/prisma.js";
 
 export default async function handler(req) {
+  // Add CORS headers for Vercel
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+  };
+
+  // Handle OPTIONS request for CORS
+  if (req.method === "OPTIONS") {
+    return new Response(null, {
+      status: 200,
+      headers: corsHeaders,
+    });
+  }
+
   // Only allow POST requests
   if (req.method !== "POST") {
     return new Response(JSON.stringify({ error: "Method not allowed" }), {
       status: 405,
-      headers: { "Content-Type": "application/json" },
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   }
 
   try {
+    // Log for debugging
+    console.log(
+      "Waitlist API called, DATABASE_URL:",
+      process.env.DATABASE_URL ? "SET" : "NOT SET"
+    );
     const body = await req.json();
     const { email } = body;
 
@@ -40,7 +60,7 @@ export default async function handler(req) {
       }),
       {
         status: 201,
-        headers: { "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   } catch (error) {
@@ -58,13 +78,20 @@ export default async function handler(req) {
     }
 
     console.error("Waitlist submission error:", error);
+    console.error("Error details:", {
+      message: error.message,
+      code: error.code,
+      name: error.name,
+    });
     return new Response(
       JSON.stringify({
         error: "Failed to join waitlist. Please try again later.",
+        details:
+          process.env.NODE_ENV === "development" ? error.message : undefined,
       }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
   }

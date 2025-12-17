@@ -30,6 +30,10 @@ export const JoinWaitlistPage = () => {
     }
 
     setIsSubmitting(true);
+    // Add timeout to prevent infinite loading
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
@@ -37,21 +41,37 @@ export const JoinWaitlistPage = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ email: waitlistEmail }),
+        signal: controller.signal,
       });
 
-      const data = await response.json();
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
-        showToast(data.error || "Failed to join waitlist", "error");
+        let errorMessage = "Failed to join waitlist";
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.error || errorMessage;
+        } catch (e) {
+          errorMessage = `Error: ${response.status} ${response.statusText}`;
+        }
+        showToast(errorMessage, "error");
+        setIsSubmitting(false);
         return;
       }
+
+      const data = await response.json();
 
       // Show success modal
       setShowSuccessModal(true);
       setWaitlistEmail("");
     } catch (error) {
+      clearTimeout(timeoutId);
       console.error("Waitlist submission error:", error);
-      showToast("Failed to join waitlist. Please try again later.", "error");
+      if (error.name === "AbortError") {
+        showToast("Request timed out. Please try again.", "error");
+      } else {
+        showToast("Failed to join waitlist. Please try again later.", "error");
+      }
     } finally {
       setIsSubmitting(false);
     }
