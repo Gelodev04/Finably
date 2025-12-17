@@ -30,6 +30,7 @@ export const SeamlessBankIntegrationPage = () => {
       <CTASection
         title="Get Started with Safe Syncing"
         buttonText="Start Now"
+        href="/join-waitlist"
       />
     </>
   );

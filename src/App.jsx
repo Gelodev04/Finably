@@ -20,6 +20,8 @@ import { CaseStudiesPage } from "./pages/CaseStudies";
 import { WebinarsEventsPage } from "./pages/WebinarsEvents";
 import { WebinarRegisterPage } from "./pages/WebinarsEvents/RegisterPage";
 import { WebinarCalendarPage } from "./pages/WebinarsEvents/CalendarPage";
+import { JoinWaitlistPage } from "./pages/JoinWaitlist";
+import { BetaTestPage } from "./pages/BetaTest";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -69,6 +71,8 @@ function App() {
               path="/webinars/calendar"
               element={<WebinarCalendarPage />}
             />
+            <Route path="/join-waitlist" element={<JoinWaitlistPage />} />
+            <Route path="/beta-test" element={<BetaTestPage />} />
           </Routes>
         </div>
         <div className="md:mx-10">

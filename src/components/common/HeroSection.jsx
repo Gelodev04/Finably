@@ -57,8 +57,9 @@ export const HeroSection = ({
           {buttonText && (
             <div className="mt-10 flex justify-center">
               <Button
+                type="ani1"
                 variant="primary"
-                className="py-3 px-6"
+                className="py-3 px-6 w-full lg:w-auto! "
                 onClick={onButtonClick}
               >
                 {buttonText}

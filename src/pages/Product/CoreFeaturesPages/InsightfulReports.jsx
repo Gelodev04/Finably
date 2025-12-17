@@ -27,7 +27,7 @@ export const InsightfulReportsPage = () => {
         title=""
         description="With Finably, your financial data becomes a clear, actionable story. Whether you’re a casual saver or a detailed planner, Insightful Reports help you understand where your money goes — and how to make it work better for you."
       />
-      <CTASection title="Start tracking smarter today" buttonText="Start Now" />
-    </>
+      <CTASection title="Start tracking smarter today" buttonText="Start Now" href="/join-waitlist" />
+    </> 
   );
 };

@@ -17,7 +17,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-black/5"></div>
 
       {/* Content */}
-      <Container className="relative z-10  text-center">
+      <Container className="relative z-10  text-center ">
         {/* Logo/Icon */}
         <div className="mb-8 flex items-center justify-center">
           <div className="bg-white p-3 rounded-3xl">
@@ -41,12 +41,16 @@ export const HeroSection = () => {
         </p>
 
         {/* CTA Button */}
-        <Button
-          variant="primary"
-          className="text-[20px] w-full max-w-[300px] py-3 rounded-4xl"
-        >
-          Get Started
-        </Button>
+        <div className="w-[300px]  mx-auto">
+          <Button
+            type="ani1"
+            href="/join-waitlist"
+            variant="primary"
+            className="text-[20px] w-full  py-3 rounded-4xl"
+          >
+            Get Started
+          </Button>
+        </div>
       </Container>
     </section>
   );

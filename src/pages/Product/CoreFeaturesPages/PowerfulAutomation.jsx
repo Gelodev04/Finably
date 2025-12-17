@@ -25,6 +25,7 @@ export const PowerfulAutomationPage = () => {
       <CTASection
         title="Let Finably Handle The Routine"
         buttonText="Start Now"
+        href="/join-waitlist"
       />
     </>
   );

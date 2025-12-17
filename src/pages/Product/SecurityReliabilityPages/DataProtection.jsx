@@ -31,6 +31,7 @@ export const DataProtectionPage = () => {
       <CTASection
         title="Start Tracking with Confidence"
         buttonText="Try Finably Now"
+        href="/join-waitlist"
       />
     </>
   );

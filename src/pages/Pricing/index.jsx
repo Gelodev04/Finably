@@ -5,11 +5,11 @@ import {
   IconGrid,
   PricingCard,
   SegmentedControl,
+  FAQAccordion,
 } from "../../components/common";
 import { Section } from "../../components/common/Section";
 import { Container } from "../../components/common/Container";
 import { LabelPill } from "../../components/common/LabelPill";
-import { Plus, Minus } from "lucide-react";
 import {
   benefits,
   pricingPlans,
@@ -21,12 +21,7 @@ import faqBg from "../../assets/images/faq-bg.png";
 import { toggleOptions } from "../../constants/pricing";
 
 export const PricingPage = () => {
-  const [openFaq, setOpenFaq] = useState(1);
   const [isYearly, setIsYearly] = useState(false);
-
-  const toggleFaq = (id) => {
-    setOpenFaq(openFaq === id ? null : id);
-  };
 
   return (
     <div className="">
@@ -60,6 +55,7 @@ export const PricingPage = () => {
             {pricingPlans.map((plan) => (
               <PricingCard
                 key={plan.id}
+                href={"/join-waitlist"}
                 name={plan.name}
                 subtitle={plan.subtitle}
                 monthlyPrice={plan.monthlyPrice}
@@ -136,36 +132,7 @@ export const PricingPage = () => {
       {/* FAQ Section */}
       <Section backgroundImage={faqBg}>
         <Container className=" ">
-            <div className="flex justify-center mb-12">
-              <LabelPill>FAQ</LabelPill>
-            </div>
-            <div className="space-y-4 max-w-6xl mx-auto w-full flex flex-col  justify-center h-[500px] md:h-[400px]">
-              {faqs.map((faq) => (
-                <div
-                  key={faq.id}
-                  className="border-b border-[#E1E1E1] rounded-xl p-6 bg-white "
-                >
-                  <button
-                    onClick={() => toggleFaq(faq.id)}
-                    className="w-full flex items-center justify-between text-left"
-                  >
-                    <h3 className="text-xl font-medium text-black">
-                      {faq.question}
-                    </h3>
-                    {openFaq === faq.id ? (
-                      <Minus size={20} className="text-primary shrink-0" />
-                    ) : (
-                      <Plus size={20} className="text-primary shrink-0" />
-                    )}
-                  </button>
-                  {openFaq === faq.id && (
-                    <p className="text-gray-600 mt-4 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
+          <FAQAccordion faqs={faqs} defaultOpen={1} />
         </Container>
       </Section>
 
@@ -176,6 +143,7 @@ export const PricingPage = () => {
         description="Choose the plan that fits your needs and start managing money with clarity today."
         buttonText="Get Started"
         buttonText2="Contact Us"
+        href="/join-waitlist"
       />
     </div>
   );

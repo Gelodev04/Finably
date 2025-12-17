@@ -230,3 +230,87 @@ button {
   padding: 0 !important;
   width: 100% !important;
 }
+
+/* Button Animation Styles */
+.btn-ani1 {
+  transition: width 0.3s ease-in-out, background-image 0.3s ease-in-out !important;
+  width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: none !important;
+}
+
+/* Override variant hover states for ani1 - prevent blinking */
+.btn-ani1:hover {
+  width: 60% !important;
+  background-image: linear-gradient(to right, #8b9aff, #064ea2) !important;
+  background-color: transparent !important;
+}
+
+/* Prevent variant hover background from interfering - use higher specificity */
+.btn-ani1.bg-primary:hover {
+  background-color: transparent !important;
+  background-image: linear-gradient(to right, #8b9aff, #064ea2) !important;
+}
+
+/* Button Animation 2 - Gradient on border and text only (smooth) */
+.btn-ani2 {
+  position: relative;
+  transition: border-color 0.3s ease-in-out !important;
+  /* Keep original background color - don't change it */
+  isolation: isolate;
+}
+
+/* Gradient border using pseudo-element with smooth animation */
+.btn-ani2::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(to right, #8b9aff, #064ea2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+  /* Create border effect by using mask to show only border area */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+/* Ensure button background and content stay above border */
+.btn-ani2,
+.btn-ani2 > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Text gradient transition */
+.btn-ani2 > * {
+  transition: background 0.3s ease-in-out,
+    -webkit-background-clip 0.3s ease-in-out, background-clip 0.3s ease-in-out,
+    -webkit-text-fill-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* On hover, show gradient border with smooth animation */
+.btn-ani2:hover::after {
+  opacity: 1;
+}
+
+.btn-ani2:hover {
+  border-color: transparent !important;
+  /* Preserve original background color - don't override */
+  background-color: inherit !important;
+  background-image: none !important;
+}
+
+/* Apply gradient to text on hover with smooth animation */
+.btn-ani2:hover > * {
+  background: linear-gradient(to right, #8b9aff, #064ea2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}

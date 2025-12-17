@@ -22,7 +22,7 @@ export const EnvelopeBudgetingPage = () => {
         description="Envelope budgeting helps you assign every dollar to a specific need, so you're never caught off guard. Instead of reacting when the bills arrive, you'll already have money set aside for them."
       />
       <SubFeaturesSection features={envelopeBudgetingSubFeatures} />
-      <CTASection title="Stay Ahead of your Spendings" buttonText="Start Now" />
+      <CTASection title="Stay Ahead of your Spendings" buttonText="Start Now" href="/join-waitlist" />
     </>
   );
 };

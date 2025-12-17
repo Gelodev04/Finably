@@ -110,7 +110,12 @@ export const Navbar = () => {
 
         {/* Desktop CTA Button */}
         <div className="hidden md:block">
-          <Button variant="outline" className="text-[16px]">
+          <Button
+            type="ani2"
+            href="/join-waitlist"
+            variant="outline"
+            className="text-[16px]"
+          >
             Get Started
           </Button>
         </div>

@@ -30,6 +30,7 @@ export const CompliancePage = () => {
       <CTASection
         title="Start Planning With Peace Of Mind"
         buttonText="Try Finably Now"
+        href="/join-waitlist"
       />
     </>
   );

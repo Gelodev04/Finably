@@ -15,6 +15,9 @@ export const CTASection = ({
   inputPlaceholder = "example@gmail.com",
   onInputChange,
   inputValue,
+  children,
+  href,
+  href2,
 }) => {
   return (
     <div
@@ -42,20 +45,27 @@ export const CTASection = ({
 
           {/* Input Form */}
           {showInput ? (
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                if (onButtonClick) {
+                  onButtonClick(e);
+                }
+              }}
+              className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto"
+            >
               <input
                 type="email"
                 placeholder={inputPlaceholder}
                 value={inputValue}
                 onChange={onInputChange}
-                className="flex-1 px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/10 text-white"
+                className="flex-1 px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/10 text-white placeholder:text-white/70"
               />
               {buttonText && (
                 <Button
+                  type="ani1"
                   variant="filled"
-                  type="submit"
-                  className=" px-8 py-3"
-                  onClick={onButtonClick}
+                  className="px-8 py-3 w-auto! hover:text-white"
                 >
                   {buttonText}
                 </Button>
@@ -64,21 +74,25 @@ export const CTASection = ({
           ) : (
             /* CTA Buttons */
             (buttonText || buttonText2) && (
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-[300px] mx-auto">
                 {buttonText && (
                   <Button
                     variant="cta"
-                    className="py-3 px-6"
+                    type="ani1"
+                    className="py-3 px-6 w-full lg:w-auto! hover:text-white "
                     onClick={onButtonClick}
+                    href={href}
                   >
                     {buttonText}
                   </Button>
                 )}
                 {buttonText2 && (
                   <Button
+                    type="ani2"
                     variant="outline2"
-                    className="py-3 px-6"
+                    className="py-3 px-6 w-auto! "
                     onClick={onButton2Click}
+                    href={href2}
                   >
                     {buttonText2}
                   </Button>
@@ -86,6 +100,9 @@ export const CTASection = ({
               </div>
             )
           )}
+
+          {/* Children (for additional content like links) */}
+          {children}
         </div>
       </Container>
     </div>

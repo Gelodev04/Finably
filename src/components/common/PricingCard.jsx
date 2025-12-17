@@ -16,6 +16,7 @@ export const PricingCard = ({
   isPopular = false,
   badge,
   className = "",
+  href,
 }) => {
   // Determine if this card should be highlighted
   const isHighlighted = highlighted || isPopular;
@@ -89,12 +90,14 @@ export const PricingCard = ({
 
       {/* Get Started Button */}
       <Button
+        type="ani1"
         variant={isHighlighted ? "outline" : "primary"}
         className={`w-full py-3 rounded-lg mb-6 ${
           isHighlighted
-            ? "bg-white text-primary hover:bg-gray-100 border-white"
+            ? "bg-white text-primary  hover:text-white border-white"
             : ""
         }`}
+        href={href}
       >
         {buttonText}
       </Button>

@@ -30,6 +30,7 @@ export const UptimeMonitoringPage = () => {
       <CTASection
         title="Experience Reliable Finance Tracking"
         buttonText="Try Finably Now"
+        href="/join-waitlist"
       />
     </>
   );

@@ -97,6 +97,7 @@ export const CaseStudiesPage = () => {
         buttonText="Get Started"
         buttonText2="Contact Us"
         onButton2Click={() => (window.location.href = "/contact")}
+        href="/join-waitlist"
       />
     </div>
   );

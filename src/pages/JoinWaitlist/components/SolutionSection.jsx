@@ -1,30 +1,27 @@
-import { solutions } from "./data/solutions";
-import { SectionHeader } from "../../components/common";
-import dashboard from "../../assets/images/dashboard-image-background.png";
-import dashboardMobile from "../../assets/images/dashboard-image-mobile.png";
-import { Container } from "../../components/common/Container";
-import { Section } from "../../components/common/Section";
+import { Section } from "../../../components/common/Section";
+import { Container } from "../../../components/common/Container";
+import { SectionHeader } from "../../../components/common";
+import { waitlistSolutions } from "../data/solutions";
+import dashboard from "../../../assets/images/dashboard-image-background.png";
+import dashboardMobile from "../../../assets/images/dashboard-image-mobile.png";
 
 export const SolutionSection = () => {
   return (
-    <Section className="">
+    <Section noBg noBorder>
       <Container>
         <SectionHeader
+          className="max-w-2xl mx-auto"
           label="Solution"
-          heading={
-            <>
-              Finally, see your entire financial <br /> picture in one place
-            </>
-          }
-          subheading="From chaos to clarity — we make money management simple."
+          heading={"Take control of your money before you spend it"}
+          subheading="Most apps only tell you where your money went. Finably helps you plan where it should go — ahead of time."
         />
         {/* Solutions Grid - 2 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 max-w-[1300px] mx-auto">
-          {solutions.map((solution) => {
+          {waitlistSolutions.map((solution) => {
             return (
               <div
                 key={solution.id}
-                className="flex flex-col gap-15 items-center md:items-start "
+                className="flex flex-col gap-15 items-center  text-center"
               >
                 {/* Icon */}
                 <div className="shrink-0 ">
@@ -53,9 +50,14 @@ export const SolutionSection = () => {
 
         <div className="mt-15">
           <img src={dashboard} alt="dashboard" className="hidden md:block" />
-          <img src={dashboardMobile} alt="dashboard" className="block md:hidden" />
+          <img
+            src={dashboardMobile}
+            alt="dashboard"
+            className="block md:hidden"
+          />
         </div>
       </Container>
     </Section>
   );
 };
+

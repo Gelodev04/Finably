@@ -30,6 +30,7 @@ export const PricingSection = () => {
           {pricingPlans.map((plan) => (
             <PricingCard
               key={plan.id}
+              href={"/join-waitlist"}
               name={plan.name}
               subtitle={plan.subtitle}
               price={plan.price}

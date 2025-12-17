@@ -5,6 +5,7 @@ export const CTASection = () => {
     <CTASectionComponent
       title="Ready To Take Control Of Your Finances?"
       buttonText="Start Now"
+      href="/join-waitlist"
     />
   );
 };
