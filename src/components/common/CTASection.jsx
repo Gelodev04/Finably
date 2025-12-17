@@ -76,12 +76,14 @@ export const CTASection = ({
           ) : (
             /* CTA Buttons */
             (buttonText || buttonText2) && (
-              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-[500px] mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-[400px] mx-auto">
                 {buttonText && (
                   <Button
                     variant="cta"
                     type="ani3"
-                    className="py-3 px-6   bg-white!  hover:text-white  "
+                    className={`py-3 px-6 bg-white! hover:text-white ${
+                      buttonText && buttonText2 ? "" : "w-auto!"
+                    }`}
                     onClick={onButtonClick}
                     href={href}
                   >
