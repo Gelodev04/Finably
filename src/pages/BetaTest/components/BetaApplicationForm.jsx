@@ -7,6 +7,7 @@ export const BetaApplicationForm = ({
   handleInputChange,
   handlePlatformChange,
   handleSubmit,
+  isSubmitting = false,
 }) => {
   return (
     <Section noBg noBorder id="beta-form">
@@ -122,8 +123,9 @@ export const BetaApplicationForm = ({
                   type="submit"
                   variant="primary"
                   className="px-8 py-3 whitespace-nowrap"
+                  disabled={isSubmitting}
                 >
-                  Apply To Beta
+                  {isSubmitting ? "Submitting..." : "Apply To Beta"}
                 </Button>
                 <p className="text-sm text-gray-500">
                   We'll only email you about beta.

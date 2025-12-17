@@ -20,7 +20,13 @@ export const Button = ({
     "px-5 py-3 rounded-[8px] cursor-pointer font-medium transition-colors whitespace-nowrap text-center w-full relative block";
 
   const animationClasses =
-    type === "ani1" ? "btn-ani1" : type === "ani2" ? "btn-ani2" : "";
+    type === "ani1"
+      ? "btn-ani1"
+      : type === "ani2"
+      ? "btn-ani2"
+      : type === "ani3"
+      ? "btn-ani3"
+      : "";
   const combinedClasses = `${baseClasses} ${variants[variant]} ${animationClasses} ${className}`;
 
   // If href is provided, render as link
@@ -35,7 +41,7 @@ export const Button = ({
   // Otherwise render as button
   return (
     <button className={combinedClasses} {...props}>
-      {children}
+      <span className="btn-content">{children}</span>
     </button>
   );
 };

@@ -85,7 +85,7 @@ export const WebinarsEventsPage = () => {
 
                   <div className="flex flex-col sm:flex-row justify-between gap-4 mt-auto">
                     <Link to="/webinars/register">
-                      <Button variant="primary">Register</Button>
+                      <Button type="ani3" variant="primary">Register</Button>
                     </Link>
                     <a
                       href="#"
@@ -178,7 +178,7 @@ export const WebinarsEventsPage = () => {
                   </p>
 
                   <div className="mt-auto">
-                    <Button variant="outline" className="w-full">
+                    <Button type="ani2" variant="outline" className="w-full">
                       Watch Recording
                     </Button>
                   </div>

@@ -7,6 +7,7 @@ export const HeroSection = ({
   waitlistEmail,
   setWaitlistEmail,
   handleWaitlistSubmit,
+  isSubmitting = false,
 }) => {
   return (
     <section
@@ -61,9 +62,10 @@ export const HeroSection = ({
           <Button
             type="ani1"
             variant="primary"
-            className="px-8 py-3 whitespace-nowrap  "
+            className="px-8 py-3 whitespace-nowrap"
+            disabled={isSubmitting}
           >
-            Join Waitlist
+            {isSubmitting ? "Joining..." : "Join Waitlist"}
           </Button>
         </form>
       </Container>

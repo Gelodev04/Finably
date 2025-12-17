@@ -94,7 +94,7 @@ export const PricingCard = ({
         variant={isHighlighted ? "outline" : "primary"}
         className={`w-full py-3 rounded-lg mb-6 ${
           isHighlighted
-            ? "bg-white text-primary  hover:text-white border-white"
+            ? "bg-white! text-primary  hover:text-white "
             : ""
         }`}
         href={href}

@@ -18,6 +18,7 @@ export const CTASection = ({
   children,
   href,
   href2,
+  isSubmitting = false,
 }) => {
   return (
     <div
@@ -65,21 +66,22 @@ export const CTASection = ({
                 <Button
                   type="ani1"
                   variant="filled"
-                  className="px-8 py-3 w-auto! hover:text-white"
+                  className="px-8 py-3 w-auto! hover:text-white bg-white!"
+                  disabled={isSubmitting}
                 >
-                  {buttonText}
+                  {isSubmitting ? "Submitting..." : buttonText}
                 </Button>
               )}
             </form>
           ) : (
             /* CTA Buttons */
             (buttonText || buttonText2) && (
-              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-[300px] mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-[500px] mx-auto">
                 {buttonText && (
                   <Button
                     variant="cta"
-                    type="ani1"
-                    className="py-3 px-6 w-full lg:w-auto! hover:text-white "
+                    type="ani3"
+                    className="py-3 px-6   bg-white!  hover:text-white  "
                     onClick={onButtonClick}
                     href={href}
                   >
@@ -90,7 +92,7 @@ export const CTASection = ({
                   <Button
                     type="ani2"
                     variant="outline2"
-                    className="py-3 px-6 w-auto! "
+                    className="py-3 px-6  "
                     onClick={onButton2Click}
                     href={href2}
                   >

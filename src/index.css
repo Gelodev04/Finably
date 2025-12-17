@@ -107,6 +107,21 @@ button {
   animation: slideInLeft 0.3s ease-out forwards;
 }
 
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
 /* FullCalendar Custom Styles */
 
 .fc {
@@ -231,26 +246,82 @@ button {
   width: 100% !important;
 }
 
-/* Button Animation Styles */
 .btn-ani1 {
-  transition: width 0.3s ease-in-out, background-image 0.3s ease-in-out !important;
-  width: 100% !important;
+  position: relative;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-image: none !important;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+  isolation: isolate;
+
+  /* Solid color background - no gradient initially */
+  background-color: #064ea2;
 }
 
-/* Override variant hover states for ani1 - prevent blinking */
+/* Gradient layer that appears on hover - explicitly behind everything */
+.btn-ani1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #8b9aff, #064ea2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Text wrapper - always visible on top with explicit positioning */
+.btn-ani1 .btn-content {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  display: block;
+}
+
 .btn-ani1:hover {
-  width: 60% !important;
-  background-image: linear-gradient(to right, #8b9aff, #064ea2) !important;
-  background-color: transparent !important;
+  width: 60%;
 }
 
-/* Prevent variant hover background from interfering - use higher specificity */
-.btn-ani1.bg-primary:hover {
-  background-color: transparent !important;
-  background-image: linear-gradient(to right, #8b9aff, #064ea2) !important;
+.btn-ani1:hover::before {
+  opacity: 1;
+}
+
+/* Button Animation 3 - Same as ani1 but without width animation */
+.btn-ani3 {
+  position: relative;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  isolation: isolate;
+
+  /* Solid color background - no gradient initially */
+  background-color: #064ea2;
+}
+
+/* Gradient layer that appears on hover - explicitly behind everything */
+.btn-ani3::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #8b9aff, #064ea2);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Text wrapper - always visible on top with explicit positioning */
+.btn-ani3 .btn-content {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  display: block;
+}
+
+.btn-ani3:hover::before {
+  opacity: 1;
 }
 
 /* Button Animation 2 - Gradient on border and text only (smooth) */

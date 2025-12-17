@@ -6,6 +6,7 @@ export const BottomCTASection = ({
   setWaitlistEmail,
   handleBottomWaitlistSubmit,
   handleBetaSubmit,
+  isSubmitting = false,
 }) => {
   return (
     <CTASection
@@ -17,6 +18,7 @@ export const BottomCTASection = ({
       inputValue={waitlistEmail}
       onInputChange={(e) => setWaitlistEmail(e.target.value)}
       onButtonClick={handleBottomWaitlistSubmit}
+      isSubmitting={isSubmitting}
     >
       {/* Beta Testing Link */}
       <div className="mt-6 flex justify-center">
