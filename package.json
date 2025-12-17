@@ -21,6 +21,7 @@
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "^7.1.0",
     "@tailwindcss/vite": "^4.1.17",
+    "@vercel/functions": "^3.3.4",
     "lucide-react": "^0.556.0",
     "pg": "^8.16.3",
     "prisma": "^7.1.0",

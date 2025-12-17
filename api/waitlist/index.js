@@ -31,7 +31,13 @@ export default async function handler(req) {
       "Waitlist API called, DATABASE_URL:",
       process.env.DATABASE_URL ? "SET" : "NOT SET"
     );
+    console.log("Request method:", req.method);
+    console.log("Request URL:", req.url);
+
     const body = await req.json();
+    console.log("Request body received:", {
+      email: body.email ? "present" : "missing",
+    });
     const { email } = body;
 
     // Validate email
@@ -46,11 +52,21 @@ export default async function handler(req) {
     }
 
     // Create waitlist entry (Prisma will handle duplicate email error)
-    const waitlistEntry = await prisma.waitlistEntry.create({
+    console.log("Attempting to create waitlist entry...");
+
+    // Add timeout wrapper for database operation
+    const createEntry = prisma.waitlistEntry.create({
       data: {
         email: email.toLowerCase().trim(),
       },
     });
+
+    const timeoutPromise = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Database operation timed out")), 15000)
+    );
+
+    const waitlistEntry = await Promise.race([createEntry, timeoutPromise]);
+    console.log("Waitlist entry created successfully:", waitlistEntry.id);
 
     return new Response(
       JSON.stringify({
