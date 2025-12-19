@@ -1,6 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
+import { ScrollToTop } from "./components/ScrollToTop";
 import { HomePage } from "./pages/Home";
 import { EnvelopeBudgetingPage } from "./pages/Product/CoreFeaturesPages/EnvelopeBudgeting.jsx";
 import { PowerfulAutomationPage } from "./pages/Product/CoreFeaturesPages/PowerfulAutomation.jsx";
@@ -27,6 +28,7 @@ import { Footer } from "./components/Footer";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="flex-1 max-w-[2000px] mx-auto md:px-10 w-full overflow-x-hidden">

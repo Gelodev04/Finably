@@ -10,6 +10,7 @@ export const features = [
     description:
       "Automatically categorizes your spending and suggests budget adjustments based on your habits.",
     image: featureImg1,
+    route: "/envelope-budgeting",
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const features = [
     description:
       "Connect accounts in seconds — we securely fetch your data and keep it updated.",
     image: featureImg2,
+    route: "/seamless-bank-integration",
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ export const features = [
     description:
       "Rules-based sorting that applies envelopes to transactions automatically — inbox stays clean.",
     image: featureImg3,
+    route: "/powerful-automation",
   },
   {
     id: 4,
@@ -31,5 +34,6 @@ export const features = [
     description:
       "Understand your spending patterns with clear charts and actionable insights on budgets, categories, and accounts.",
     image: featureImg4,
+    route: "/insightful-reports",
   },
 ];
