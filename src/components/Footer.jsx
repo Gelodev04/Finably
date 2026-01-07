@@ -6,7 +6,7 @@ export const Footer = () => {
   const navLinks = [
     "Features",
     "Solutions",
-    "Pricing",
+    // "Pricing", // Commented out per client request
     "Blog",
     "Help Center",
     "Company",
