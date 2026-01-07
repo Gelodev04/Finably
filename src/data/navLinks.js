@@ -29,11 +29,11 @@ export const navLinks = [
       ],
     },
   },
-  {
-    label: "Pricing",
-    href: "/pricing",
-    hasDropdown: false,
-  },
+  // {
+  //   label: "Pricing",
+  //   href: "/pricing",
+  //   hasDropdown: false,
+  // }, // Commented out per client request
   {
     label: "Resources",
     href: "#",
